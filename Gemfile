@@ -4,7 +4,7 @@ gem 'rails', '3.0.5'
 gem 'devise'
 gem 'rspec'
 gem 'cucumber'
-
+gem 'cancan'
 gem 'sqlite3'
 
 # Bundle edge Rails instead:
