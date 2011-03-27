@@ -1,0 +1,17 @@
+%h2= @group.name
+%br
+%p Configure as permisões do grupo abaixo
+
+= form_for(@role, :url => {:controller => "group", :action => "vincular_regra"}) do |f|
+    = f.label "Nome"
+    = f.text_field :name
+    %br
+    = f.label "Valor"
+    = f.text_field :value
+    %br
+    = f.hidden_field :Group
+    %br
+    = f.submit "Salvar Regras"
+
+%p= link_to "Voltar", group_index_path
+

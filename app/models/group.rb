@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  has_many :Role
+  has_one :Role
 
 end
 

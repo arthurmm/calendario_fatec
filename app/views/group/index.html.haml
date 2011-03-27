@@ -1,9 +1,11 @@
 %table
     %th Nome
-    = @groups.each do |group|
+    - @groups.each do |group|
         %tr
-            %td = group.name
+            %td= link_to "Show", group_path(group.id)
+            %td= group.name
 
+%br
 .links
     = link_to "Criar", new_group_path
 
