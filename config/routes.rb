@@ -1,4 +1,8 @@
 Aps3::Application.routes.draw do
+  root :to => "users#sign_in"
+
+  get "group/index"
+
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -58,3 +62,4 @@ Aps3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+
