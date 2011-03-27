@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :Group
+  validates_length_of :password, :minimum => 6
+  validates_length_of :password_confirmation, :minimum => 6
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)

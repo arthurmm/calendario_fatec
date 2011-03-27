@@ -1,0 +1,17 @@
+.user.insert
+    = form_for(@user) do |f|
+        -@user.errors.full_messages.each do |msg|
+            %p= msg
+        = f.label :name, "Nome"
+        = f.text_field :name
+        %br
+        = f.label :email, "E-mail"
+        = f.text_field :email
+        %br
+        = f.label :password, "Senha"
+        = f.text_field :password
+        %br
+        = f.label :password_confirmation, "Confirmar Senha"
+        = f.text_field :password_confirmation
+        = f.submit "Salvar"
+
