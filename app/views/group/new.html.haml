@@ -1,0 +1,5 @@
+.group.insert
+    = form_for(@group, :url => {:controller => "group", :action=>"create"}) do |f|
+        = f.text_field :name
+        = f.submit "Salvar"
+

@@ -10,11 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110320192531) do
+ActiveRecord::Schema.define(:version => 20110327064133) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.boolean  "valid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

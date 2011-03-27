@@ -1,0 +1,9 @@
+%table
+    %th Nome
+    = @groups.each do |group|
+        %tr
+            %td = group.name
+
+.links
+    = link_to "Criar", new_group_path
+
