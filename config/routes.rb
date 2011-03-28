@@ -1,7 +1,12 @@
 Aps3::Application.routes.draw do
-  devise_for :users
+  get "users/index"
 
-  root :to => 'home#index'
+  root :to => "home#login"
+  resources :group
+  resources :post
+  devise_for :users, :path => "usuarios", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock' }
+
+  match '/post' => 'post#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
