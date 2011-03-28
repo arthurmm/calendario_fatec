@@ -1,0 +1,12 @@
+!!!
+%html
+%head
+    %title Aps3
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+%body
+    = render :partial => "layouts/menu"
+    = yield
+    .footer= debug(params) if Rails.env.development?
+

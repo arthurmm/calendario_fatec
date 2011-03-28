@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
-
-  def index
-    render :text => 'Home'
+  def login
+    render :layout => "layouts/login"
   end
 
 end
