@@ -1,4 +1,6 @@
 Aps3::Application.routes.draw do
+  get "clientes/index"
+
   get "users/index"
 
   root :to => "home#login"
