@@ -1,6 +1,11 @@
 .cliente.new
     %h1 Inserir novo cliente
+
     -form_for(@cliente) do |f|
+        - unless @cliente.errors.empty?
+            - @cliente.errors.full_messages.each  do |msg|
+                %p= msg
+
         = f.label :nome, "Nome"
         = f.text_field :nome
 

@@ -8,10 +8,16 @@ class ClientesController < ApplicationController
   end
 
   def create
-    cliente = Cliente.new(params[:cliente])
-    if cliente.save
+    logger.info params[:cliente]
+    @cliente = Cliente.new(params[:cliente])
+    if @cliente.save
       redirect_to :action => "index"
+    else
+      logger.info @cliente.errors.full_messages
+      render :action => "new"
     end
+
+
   end
 
   def show
