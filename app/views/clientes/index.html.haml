@@ -1,0 +1,11 @@
+%div#clientes
+    %h1 Todos os clientes com OS pendentes
+    - @clientes.each do |cliente|
+        .cliente
+            = cliente.nome
+            = cliente.rg
+            = cliente.data_de_nascimento
+
+    .links
+        = link_to "Novo Cliente", new_cliente_path
+

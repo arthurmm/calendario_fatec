@@ -1,0 +1,17 @@
+.cliente.new
+    %h1 Inserir novo cliente
+    -form_for(@cliente) do |f|
+        = f.label :nome, "Nome"
+        = f.text_field :nome
+
+        %br
+        = f.label :rg,  "RG"
+        = f.text_field :rg
+
+        %br
+        = f.label :data_de_nascimento,  "Data de Nascimento"
+        = f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
+
+        %br
+        = f.submit "Salvar"
+
