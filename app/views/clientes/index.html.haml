@@ -2,6 +2,7 @@
     %h1 Todos os clientes com OS pendentes
     - @clientes.each do |cliente|
         .cliente
+            = link_to "Selecionar", cliente_path(cliente.id)
             = cliente.nome
             = cliente.rg
             = cliente.data_de_nascimento

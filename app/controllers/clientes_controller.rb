@@ -13,5 +13,10 @@ class ClientesController < ApplicationController
       redirect_to :action => "index"
     end
   end
+
+  def show
+    @cliente = Cliente.find(params[:id])
+  end
+
 end
 
