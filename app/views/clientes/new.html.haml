@@ -18,5 +18,10 @@
         = f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
 
         %br
+        =f.fields_for :contact do |contato|
+            = contato.label :valor, "Telefone"
+            = contato.text_field :valor
+
+        %br
         = f.submit "Salvar"
 

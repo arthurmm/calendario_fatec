@@ -8,8 +8,12 @@ class ClientesController < ApplicationController
   end
 
   def create
-    logger.info params[:cliente]
+    logger.info params[:cliente].inspect
+    @contato = Contato.new(params[:cliente][:contact])
+    params[:cliente].delete(:contact)
     @cliente = Cliente.new(params[:cliente])
+    @cliente.contacts << @contato
+
     if @cliente.save
       redirect_to :action => "index"
     else
