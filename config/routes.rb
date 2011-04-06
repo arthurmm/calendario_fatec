@@ -2,6 +2,14 @@ Aps3::Application.routes.draw do
   devise_for :users
 
   root :to => 'home#index'
+  get "clientes/index"
+
+  get "users/index"
+
+  resources :clientes
+  resources :group
+  resources :users
+  devise_for :users, :path => "usuarios", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -60,3 +68,4 @@ Aps3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+

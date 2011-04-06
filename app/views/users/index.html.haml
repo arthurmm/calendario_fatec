@@ -1,0 +1,16 @@
+.users.insert
+%table
+    %th
+    %th Nome
+    %th E-mail
+    -@users.each do |user|
+        %tr
+            %td= link_to "Detalhes", user_path(user.id)
+            %td= link_to "Editar", edit_user_path(user.id)
+            %td= user.name
+            %td= user.email
+
+.links
+    =link_to "Novo", new_user_path
+    =link_to "Voltar", users_index_path
+

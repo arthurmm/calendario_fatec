@@ -2,13 +2,15 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 gem 'cancan'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 gem 'devise'
 gem 'rspec'
 gem 'cucumber'
+gem 'cancan'
+gem 'sqlite3'
+gem 'haml'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
