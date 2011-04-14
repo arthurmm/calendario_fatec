@@ -7,6 +7,7 @@ class Cliente < ActiveRecord::Base
   validates_length_of :nome, :minimum => 10, :message => "Campo nome deve conter no minimo de 10 caracteres"
   validates_presence_of :data_de_nascimento, :message => "Campo data de nascimento obrigatório."
 
+
 end
 
 class Lead < Cliente
