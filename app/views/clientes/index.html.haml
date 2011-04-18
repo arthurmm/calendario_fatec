@@ -17,6 +17,7 @@
                 %td= cliente.data_de_nascimento.strftime('%d/%m/%Y') unless cliente.data_de_nascimento.nil?
                 %td= cliente.contatos.first.valor unless cliente.contatos.empty?
 
+
     %br
     .links
         = link_to "Novo Cliente", new_cliente_path

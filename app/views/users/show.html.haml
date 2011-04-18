@@ -1,9 +1,12 @@
 .user.show
 
     %h2= @user.name
-    %br
     %p Dados do Usuário
-    %span= @user.email
+    %table
+        %tr
+            %th Email
+        %tr
+            %td @user.email
 .links
     =link_to "Voltar", users_index_path
 

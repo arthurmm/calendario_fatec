@@ -1,0 +1,14 @@
+%div#ordem_servico
+    %table
+        %th Tipo Pedido
+        %th Cliente
+        - @ordem_servicos.each do |ordem_servico|
+            %tr
+                %td= ordem_servico.tipo_pedido
+                %td= ordem_servico.cliente.nome unless ordem_servico.cliente.nil?
+                %td= link_to "Detalhes", ordem_servico_path(ordem_servico.id)
+                %td= link_to "Editar", edit_ordem_servico_path(ordem_servico.id)
+
+    .links
+        = link_to "Nova Ordem Serviço", new_ordem_servico_path
+

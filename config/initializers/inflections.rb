@@ -7,6 +7,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 #  inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
-    inflect.irregular 'contato', 'contatos'
- end
+  inflect.irregular 'contato', 'contatos'
+  inflect.irregular 'ordem_servico', 'ordem_servico'
+end
 

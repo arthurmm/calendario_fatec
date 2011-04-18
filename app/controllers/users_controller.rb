@@ -19,7 +19,20 @@ class UsersController < ApplicationController
     else
       render :action => "new"
     end
+  end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to :action => 'index'
+    else
+      flash[:error] = 'Houve algum erro no atualização dos campos'
+      redirect_to :action => 'edit'
+    end
   end
 end
 
