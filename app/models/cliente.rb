@@ -1,6 +1,7 @@
 class Cliente < ActiveRecord::Base
   #has_many OrdemServico
   has_many :contacts, :class_name => "Contato"
+  has_many :ordem_servico
   accepts_nested_attributes_for :contacts
 
   validates_presence_of :nome, :message => "Campo nome obrigátorio."
