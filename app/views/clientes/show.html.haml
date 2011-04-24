@@ -14,16 +14,16 @@
         %table
             %tr
                 %th Forma de Contato
-                %th
+                %th Exluir
             -@cliente.contatos.each do |contato|
                 %tr
                     %td=contato.valor
-                    %td=link_to "Excluir"
+                    %td=delete_link cliente_path(@cliente.id)
 
 
-    = link_to "Adicionar Contato"
-
-.links
-    = link_to "Voltar", clientes_path
-    = link_to "Adicionar OS"
+-content_for :submenu do
+    %ul
+        %li= link_to "Adicionar Contato", new_cliente_path
+        %li= link_to "Adicionar OS"
+        %li= link_to "Voltar", clientes_path
 
