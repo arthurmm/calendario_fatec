@@ -6,6 +6,9 @@ class OrdemServicoController < ApplicationController
 
   def new
     @ordem_servico = OrdemServico.new
+    @clientes = Cliente.all.map do |cliente|
+      cliente = [ cliente.nome, cliente.id ]
+    end
   end
 
   def show
@@ -24,6 +27,7 @@ class OrdemServicoController < ApplicationController
 
   def edit
     @ordem_servico = OrdemServico.find(params[:id])
+    @cliente = [ [ @ordem_servico.cliente.nome, @ordem_servico.cliente.id ]]
   end
 
   def update

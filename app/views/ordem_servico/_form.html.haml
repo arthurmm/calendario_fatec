@@ -3,7 +3,10 @@
     - unless @ordem_servico.errors.empty?
       - @ordem_servico.errors.full_messages.each  do |msg|
         %p= msg
-  
+
+    = f.label :cliente_id, "Cliente"
+    = f.select(:cliente_id, @clientes || @cliente)
+    %br  
     = f.label :tipo_pedido, "Tipo da Ordem de Serviço (Orçamento ou Ordem de Serviço)"
     = f.radio_button :tipo_pedido, 'Orçamento'
     = f.radio_button :tipo_pedido, 'Ordem de Serviço'
