@@ -1,21 +1,28 @@
 -form_for(@cliente) do |f|
     - unless @cliente.errors.empty?
-        - @cliente.errors.full_messages.each  do |msg|
-            %p= msg
+        - @cliente.errors.each do |msg|
+            %p= msg.last
 
     = f.label :nome, "Nome"
     = f.text_field :nome
+
     %br
     = f.label :rg,  "RG"
     = f.text_field :rg
+
     %br
     = f.label :data_de_nascimento,  "Data de Nascimento"
     = f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
+
     %br
-    =f.fields_for :contact do |contato|
+    =f.fields_for :contatos do |contato|
         = contato.label :valor, "Telefone"
         = contato.text_field :valor
 
     %br
     = f.submit "Salvar"
+
+- content_for :submenu do
+    %ul
+        %li=link_to "Voltar" , :back
 

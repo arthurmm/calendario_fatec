@@ -5,14 +5,11 @@ class ClientesController < ApplicationController
 
   def new
     @cliente = Cliente.new
+    @cliente.contatos << Contato.new
   end
 
   def create
-    logger.info params[:cliente].inspect
-    @contato = Contato.new(params[:cliente][:contact])
-    params[:cliente].delete(:contact)
     @cliente = Cliente.new(params[:cliente])
-    @cliente.contacts << @contato
 
     if @cliente.save
       redirect_to :action => "index"
@@ -20,7 +17,20 @@ class ClientesController < ApplicationController
       logger.info @cliente.errors.full_messages
       render :action => "new"
     end
+  end
 
+  def edit
+    @cliente = Cliente.find(params[:id])
+  end
+
+  def update
+    @cliente = Cliente.find(params[:id])
+
+    if @cliente.update_attributes(params[:cliente])
+        redirect_to :action => :index
+      else
+        redirect_to :action => :edit
+    end
 
   end
 

@@ -2,11 +2,28 @@
     %p.detalhe
         %h4=  @cliente.nome
         %p
-            %strong= @cliente.rg
-            %strong= @cliente.data_de_nascimento
+            %p
+                %strong RG do cliente:
+                %label= @cliente.rg
+            %p
+                %strong Data de Nascimento:
+                %label= @cliente.data_de_nascimento
+
+    %h4 Contatos
+    .contatos
+        %table
+            %tr
+                %th Forma de Contato
+                %th Exluir
+            -@cliente.contatos.each do |contato|
+                %tr
+                    %td=contato.valor
+                    %td=delete_link cliente_path(@cliente.id)
 
 
-.links
-    = link_to "Voltar", clientes_path
-    = link_to "Adicionar OS"
+-content_for :submenu do
+    %ul
+        %li= link_to "Adicionar Contato", new_cliente_path
+        %li= link_to "Adicionar OS"
+        %li= link_to "Voltar", clientes_path
 

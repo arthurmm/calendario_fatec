@@ -1,14 +1,26 @@
 %div#clientes
+    %h1 Todos os clientes com OS pendentes
     %table
-        %th Nome
-        %th Data de Nascimento
+        %tr
+            %td Selecione
+            %td Editar
+            %td Nome do Cliente
+            %td RG
+            %td Data de Nascimento
+            %td Contato Principal
         - @clientes.each do |cliente|
-            %tr
+            %tr.cliente
+                %td= select_link cliente_path(cliente.id)
+                %td= edit_link edit_cliente_path(cliente.id)
                 %td= cliente.nome
-                %td= cliente.data_de_nascimento
-                %td= link_to "Detalhes", cliente_path(cliente.id)
-                %td= link_to "Editar", edit_cliente_path(cliente.id)
+                %td= cliente.rg
+                %td= cliente.data_de_nascimento.strftime('%d/%m/%Y') unless cliente.data_de_nascimento.nil?
+                %td= cliente.contatos.first.valor unless cliente.contatos.empty?
 
-    .links
-        = link_to "Novo Cliente", new_cliente_path
+
+    %br
+
+-content_for :submenu do
+    %ul
+        %li= link_to "Cadastrar", new_cliente_path
 
