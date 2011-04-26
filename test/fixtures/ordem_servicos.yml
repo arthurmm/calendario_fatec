@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tipo_pedido: MyString
+  descricao_equipamento: MyString
+  descricao_defeito: MyString
+  descricao_servico_realizado: MyString
+  diagnostico_tecnico: MyString
+  numero_serie_equipamento: MyString
+  descricao_pecas: MyString
+  valor_servico: 
+
+two:
+  tipo_pedido: MyString
+  descricao_equipamento: MyString
+  descricao_defeito: MyString
+  descricao_servico_realizado: MyString
+  diagnostico_tecnico: MyString
+  numero_serie_equipamento: MyString
+  descricao_pecas: MyString
+  valor_servico: 

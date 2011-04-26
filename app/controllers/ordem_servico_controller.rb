@@ -22,4 +22,18 @@ class OrdemServicoController < ApplicationController
     end
   end
 
+  def edit
+    @ordem_servico = OrdemServico.find(params[:id])
+  end
+
+  def update
+    @ordem_servico = OrdemServico.find(params[:id])
+    if @ordem_servico.update_attributes(params[:ordem_servico])
+      redirect_to :action => 'index'
+    else
+      flash[:error] = 'Houve algum erro no atualização dos campos'
+      redirect_to :action => 'edit'
+    end
+  end
+
 end

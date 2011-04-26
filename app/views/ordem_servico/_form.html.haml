@@ -5,7 +5,8 @@
         %p= msg
   
     = f.label :tipo_pedido, "Tipo da Ordem de Serviço (Orçamento ou Ordem de Serviço)"
-    = f.text_field :tipo_pedido
+    = f.radio_button :tipo_pedido, 'Orçamento'
+    = f.radio_button :tipo_pedido, 'Ordem de Serviço'
     %br
     = f.label :descricao_equipamento, "Descrição do Equipamento"
     = f.text_field :descricao_equipamento

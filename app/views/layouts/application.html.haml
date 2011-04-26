@@ -7,6 +7,9 @@
     = csrf_meta_tag
 %body
     = link_to "Home", root_path 
+    = link_to "Clientes", clientes_path
+    = link_to "Usuários", users_path
+    = link_to "Ordens de Serviço", ordem_servico_index_path
     = yield
     .footer= debug(params) if Rails.env.development?
 
