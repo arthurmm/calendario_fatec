@@ -27,6 +27,7 @@
             %td= @ordem_servico.valor_servico
         %tr
 
-.links
-    = link_to "Voltar", ordem_servico_index_path
+- content_for :submenu do
+    %ul
+        %li= link_to "Voltar", ordem_servico_index_path 
 
