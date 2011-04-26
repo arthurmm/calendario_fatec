@@ -1,1 +1,5 @@
 = render 'users/form'
+
+-content_for :submenu do
+    %ul
+        %li= link_to "Voltar", users_path

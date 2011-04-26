@@ -1,14 +1,19 @@
-.users.insert
-%table
-    %th Nome
-    %th E-mail
-    -@users.each do |user|
+%div#usuarios
+  %h1 Usuários do Sistema
+  %table
+    %tr
+      %th Selecione
+      %th Editar
+      %th Nome do Usuário
+      %th E-mail
+      -@users.each do |user|
         %tr
-            %td= user.name
-            %td= user.email
-            %td= link_to "Detalhes", user_path(user.id)
-            %td= link_to "Editar", edit_user_path(user.id)
+          %td= select_link user_path(user.id)
+          %td= edit_link edit_user_path(user.id)
+          %td= user.name
+          %td= user.email
 
-.links
-    =link_to "Novo", new_user_path
+-content_for :submenu do
+  %ul
+    %li= link_to "Cadastrar", new_user_path
 

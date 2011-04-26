@@ -7,6 +7,8 @@
             %th Email
         %tr
             %td @user.email
-.links
-    =link_to "Voltar", users_index_path
+
+-content_for :submenu do
+    %ul
+        %li= link_to "Voltar", users_path
 
