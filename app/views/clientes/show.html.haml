@@ -24,6 +24,6 @@
 -content_for :submenu do
     %ul
         %li= link_to "Adicionar Contato", new_cliente_contato_path(@cliente)
-        %li= link_to "Adicionar OS"
+        %li= link_to "Adicionar OS", new_cliente_ordem_servico_path(@cliente)
         %li= link_to "Voltar", clientes_path
 
