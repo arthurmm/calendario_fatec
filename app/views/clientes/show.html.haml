@@ -18,12 +18,12 @@
             -@cliente.contatos.each do |contato|
                 %tr
                     %td=contato.valor
-                    %td=link_to "apagar", destroy_cliente_contato_path(contato), :confirm => "Quer deletar essa merda?", :method => :delete
+                    %td=link_to "apagar", cliente_contato_path(contato), :confirm => "Quer deletar essa merda?", :method => :delete
 
 
 -content_for :submenu do
     %ul
-        %li= link_to "Adicionar Contato", new_cliente_path
+        %li= link_to "Adicionar Contato", new_cliente_contato_path(@cliente)
         %li= link_to "Adicionar OS"
         %li= link_to "Voltar", clientes_path
 
