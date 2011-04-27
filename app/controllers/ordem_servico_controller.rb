@@ -6,14 +6,19 @@ class OrdemServicoController < ApplicationController
 
   def new
     @ordem_servico = OrdemServico.new
-    @clientes = Cliente.all.map do |cliente|
-      cliente = [ cliente.nome, cliente.id ]
+    if params[:cliente_id]
+      cliente = Cliente.find(params[:cliente_id])
+        @cliente = [ [ cliente.nome, cliente.id ] ]
+      else
+        @clientes = Cliente.all.map do |cliente|
+          cliente = [ cliente.nome, cliente.id ]
+        end
+      end
     end
-  end
 
-  def show
-    @ordem_servico = OrdemServico.find(params[:id])
-  end
+    def show
+      @ordem_servico = OrdemServico.find(params[:id])
+    end
 
   def create
     @ordem_servico = OrdemServico.new(params[:ordem_servico])

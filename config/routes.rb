@@ -8,6 +8,7 @@ Aps3::Application.routes.draw do
 
   resources :clientes do
     resources :contato
+    resources :ordem_servico
   end
 
   resources :group
