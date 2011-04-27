@@ -6,7 +6,10 @@ Aps3::Application.routes.draw do
 
   get "users/index"
 
-  resources :clientes
+  resources :clientes do
+    resource :contatos
+  end
+
   resources :group
   resources :users
   resources :ordem_servico

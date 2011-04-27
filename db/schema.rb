@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406001150) do
+ActiveRecord::Schema.define(:version => 20110413210643) do
 
   create_table "clientes", :force => true do |t|
     t.string   "nome"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(:version => 20110406001150) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ordem_servico", :force => true do |t|
+    t.string   "tipo_pedido"
+    t.string   "descricao_equipamento"
+    t.string   "descricao_defeito"
+    t.string   "descricao_servico_realizado"
+    t.string   "diagnostico_tecnico"
+    t.string   "numero_serie_equipamento"
+    t.string   "descricao_pecas"
+    t.decimal  "valor_servico"
+    t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
