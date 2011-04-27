@@ -1,8 +1,5 @@
 - content_for :submenu do
-    %ul
-        %li= link_to "Grupos de Usuários", group_index_path
-        %li= link_to "Usuários", users_index_path
-        %li= link_to "Clientes", clientes_index_path
-        %li= link_to "Ordem de Serviço", ordem_servico_index_path
+    =render :partial => "layouts/menu"
 
 %p bem vindo
+
