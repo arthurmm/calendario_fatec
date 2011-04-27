@@ -6,7 +6,7 @@
 
     = f.label :cliente_id, "Cliente"
     = f.select(:cliente_id, @clientes || @cliente)
-    %br  
+    %br
     = f.label :tipo_pedido, "Tipo da Ordem de Serviço (Orçamento ou Ordem de Serviço)"
     = f.radio_button :tipo_pedido, 'Orçamento'
     = f.radio_button :tipo_pedido, 'Ordem de Serviço'
@@ -33,4 +33,4 @@
     = f.text_field :valor_servico
     %br
     = f.submit "Salvar"
-  
+

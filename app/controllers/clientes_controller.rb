@@ -29,7 +29,7 @@ class ClientesController < ApplicationController
     if @cliente.update_attributes(params[:cliente])
         redirect_to :action => :index
       else
-        redirect_to :action => :edit
+        render :action => :edit
     end
 
   end
