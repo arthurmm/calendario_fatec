@@ -18,24 +18,33 @@
       = f.radio_button :tipo_pedido, 'Ordem de Serviço'
     %br
     Situação
-    - if @ordem_servico.tipo_pedido.blank?
-      = f.label :situacao, "Em orçamento"
-      = f.radio_button :situacao, "Em orçamento", :checked => true
-    - else
-      = f.label :situacao, "Em orçamento"
-      = f.radio_button :situacao, "Em orçamento"
-      = f.label :situacao, "Aguardando aprovação"
-      = f.radio_button :situacao, "Aguardando aprovação"
-      = f.label :situacao, "Em conserto"
-      = f.radio_button :situacao, "Em conserto"
-      = f.label :situacao, "Aguardando pagamento"
-      = f.radio_button :situacao, "Aguardando pagamento"
-      = f.label :situacao, "Fechado"
-      = f.radio_button :situacao, "Fechado"
-      = f.label :situacao, "Cancelado pelo cliente"
-      = f.radio_button :situacao, "Cancelado pelo cliente"
-      = f.label :situacao, "Cancelado pelo atendente"
-      = f.radio_button :situacao, "Cancelado pelo atendente"
+    %table
+      - if @ordem_servico.tipo_pedido.blank?
+        %tr
+          %td= f.label :situacao, "Em orçamento"
+          %td= f.radio_button :situacao, "Em orçamento", :checked => true
+      - else
+        %tr
+          %td= f.label :situacao, "Em orçamento"
+          %td= f.radio_button :situacao, "Em orçamento"
+        %tr
+          %td= f.label :situacao, "Aguardando aprovação"
+          %td= f.radio_button :situacao, "Aguardando aprovação"
+        %tr
+          %td= f.label :situacao, "Em conserto"
+          %td= f.radio_button :situacao, "Em conserto"
+        %tr
+          %td= f.label :situacao, "Aguardando pagamento"
+          %td= f.radio_button :situacao, "Aguardando pagamento"
+        %tr
+          %td= f.label :situacao, "Fechado"
+          %td= f.radio_button :situacao, "Fechado"
+        %tr
+          %td= f.label :situacao, "Cancelado pelo cliente"
+          %td= f.radio_button :situacao, "Cancelado pelo cliente"
+        %tr
+          %td= f.label :situacao, "Cancelado pelo atendente"
+          %td= f.radio_button :situacao, "Cancelado pelo atendente"
     
     %br
     = f.label :descricao_equipamento, "Descrição do Equipamento"
@@ -45,7 +54,7 @@
     = f.text_field :numero_serie_equipamento
     %br
     = f.label :descricao_defeito, "Descrição Defeito"
-    = f.text_field :descricao_defeito
+    = f.text_area :descricao_defeito, :cols => 40, :rows => 10
 
     - unless @ordem_servico.tipo_pedido.blank?
       %br
