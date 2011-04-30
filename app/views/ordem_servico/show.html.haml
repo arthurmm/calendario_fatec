@@ -5,6 +5,9 @@
             %td Tipo da Ordem
             %td= @ordem_servico.tipo_pedido
         %tr
+            %td Equipamento
+            %td= @ordem_servico.tipo_equipamento.nome
+        %tr
             %td Situação
             %td= @ordem_servico.situacao
         %tr

@@ -6,6 +6,9 @@
 
     = f.label :cliente_id, "Cliente"
     = f.select(:cliente_id, @clientes || @cliente)
+    = f.label :tipo_equipamento_id, "Equipamento"
+    = f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
+
     %br 
     Tipo da Ordem de Serviço 
     - if @ordem_servico.tipo_pedido.blank?
@@ -45,7 +48,7 @@
         %tr
           %td= f.label :situacao, "Cancelado pelo atendente"
           %td= f.radio_button :situacao, "Cancelado pelo atendente"
-    
+
     %br
     = f.label :descricao_equipamento, "Descrição do Equipamento"
     = f.text_field :descricao_equipamento
