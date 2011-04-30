@@ -1,0 +1,16 @@
+%div#equipamento
+    %h1 Tipo de Equipamentos
+    %table
+        %tr
+            %th
+            %th Nome do Equipamento
+            -@equipamentos.each do |equip|
+                %tr
+                    %td= delete_link tipo_equipamento_path(equip.id), :confirm => "Quer deletar esse equipamento?", :method => :delete
+
+                    %td= equip.nome
+
+-content_for :submenu do
+    %ul
+        %li= link_to "Cadastrar", new_tipo_equipamento_path
+

@@ -1,4 +1,5 @@
 Aps3::Application.routes.draw do
+
   devise_for :users
 
   root :to => 'home#index'
@@ -11,6 +12,7 @@ Aps3::Application.routes.draw do
     resources :ordem_servico
   end
 
+  resources :tipo_equipamento
   resources :group
   resources :users
   resources :ordem_servico

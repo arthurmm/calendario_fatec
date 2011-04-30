@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110430045125) do
     t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.string   "situacao"
   end
 
@@ -58,6 +59,9 @@ ActiveRecord::Schema.define(:version => 20110430045125) do
     t.string   "conteudo"
     t.datetime "created_at"
     t.datetime "updated_at"
+=======
+    t.integer  "tipo_equipamento_id"
+>>>>>>> tmaster
   end
 
   create_table "roles", :force => true do |t|
@@ -73,10 +77,15 @@ ActiveRecord::Schema.define(:version => 20110430045125) do
     t.integer "user_id"
   end
 
+<<<<<<< HEAD
   create_table "rules", :force => true do |t|
     t.string   "model_controller"
     t.integer  "action"
     t.integer  "role_id"
+=======
+  create_table "tipo_equipamentos", :force => true do |t|
+    t.string   "nome"
+>>>>>>> tmaster
     t.datetime "created_at"
     t.datetime "updated_at"
   end

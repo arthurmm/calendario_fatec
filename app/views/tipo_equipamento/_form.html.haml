@@ -1,0 +1,10 @@
+.equipamento.form
+    = form_for(@equipamento, :url =>{:controller => "tipo_equipamento", :action => "create"}) do |f|
+        -@equipamento.errors.full_messages.each do |msg|
+            %p= msg
+
+        = f.label :nome, "Nome do Equipamento"
+        = f.text_field :nome
+
+        = f.submit "Salvar"
+
