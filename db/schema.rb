@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110430045125) do
     t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tipo"
   end
 
   create_table "groups", :force => true do |t|

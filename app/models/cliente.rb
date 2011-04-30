@@ -12,11 +12,3 @@ class Cliente < ActiveRecord::Base
 
 end
 
-class Lead < Cliente
-
-end
-
-class ClienteFinal < Cliente
-
-end
-
