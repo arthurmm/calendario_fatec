@@ -18,7 +18,7 @@
             -@cliente.contatos.each do |contato|
                 %tr
                     %td=contato.valor
-                    %td=delete_link cliente_contato_path(contato), :confirm => "Quer deletar essa merda?", :method => :delete
+                    %td=delete_link cliente_contato_path(contato), :confirm => "Quer deletar esse contato?", :method => :delete
 
 
 -content_for :submenu do

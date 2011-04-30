@@ -14,7 +14,6 @@ class ClientesController < ApplicationController
     if @cliente.save
       redirect_to :action => "index"
     else
-      logger.info @cliente.errors.full_messages
       render :action => "new"
     end
   end
