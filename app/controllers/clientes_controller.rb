@@ -1,6 +1,23 @@
 class ClientesController < ApplicationController
+
+  def search
+    @equipamentos = TipoEquipamento.all
+    @situacao = OrdemServico::Situacao.to_a
+  end
+
+  def search_do
+    @clientes = Cliente.search(params)
+    render :action => "index"
+  end
+
   def index
-    @clientes = Cliente.all
+    @clientes = []
+
+    OrdemServico.all.each do |os|
+      @clientes << os.cliente
+    end
+
+    @clientes
   end
 
   def new

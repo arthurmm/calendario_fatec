@@ -10,5 +10,15 @@ class Cliente < ActiveRecord::Base
   validates_presence_of :data_de_nascimento, :message => "Campo data de nascimento obrigatório."
 
 
+  def self.search(search)
+    query = []
+    query << "nome like '%#{search[:nome]}%' " unless search[:nome].blank?
+    query << "rg = #{search[:rg]}" unless search[:rg].blank?
+    query << "ordem_servico.situacao = #{search[:situacao]}" unless search[:situacao].blank?
+    query << "ordem_servico.tipo_equipamento_id = #{search[:equipamento]}" unless search[:equipamento].blank?
+
+    find(:all, :joins => :ordem_servico, :conditions => query.join(" AND "))
+  end
+
 end
 

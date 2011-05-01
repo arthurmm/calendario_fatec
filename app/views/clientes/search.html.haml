@@ -1,0 +1,23 @@
+.search.cliente
+    %h2  Busca de clientes
+    -form_tag(clientes_search_do_path, :method => 'get') do
+
+        =label_tag "Nome"
+        =text_field_tag :nome, params[:nome]
+        %br
+
+        =label_tag "RG"
+        =text_field_tag :rg, params[:rg]
+        %br
+
+        =label_tag "situação do Pedido"
+        =select_tag :situacao,  options_for_select(@situacao), :include_blank => true
+
+        %br
+
+        =label_tag "Equipamento do pedido"
+        =select_tag :equipamento, options_from_collection_for_select(@equipamentos , 'id', 'nome'), :include_blank => true
+        %br
+
+        =submit_tag "Buscar"
+
