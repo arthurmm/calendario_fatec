@@ -1,5 +1,14 @@
 class OrdemServicoController < ApplicationController
 
+  def search
+    @equipamentos = TipoEquipamento.all
+  end
+
+  def search_do
+    @ordem_servicos = OrdemServico.search(params)
+    render :action => 'index'
+  end
+
   def index
     @ordem_servicos = OrdemServico.all
   end

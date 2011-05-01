@@ -9,6 +9,8 @@ Aps3::Application.routes.draw do
 
   get "clientes/search"
   get "clientes/search_do"
+  get "ordem_servico/search"
+  get "ordem_servico/search_do"
 
   resources :clientes do
     resources :contato
