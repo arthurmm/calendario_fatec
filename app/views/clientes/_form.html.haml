@@ -15,9 +15,14 @@
     = f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
 
     %br
+    - n_contato = 0
     =f.fields_for :contatos do |contato|
-        = contato.select(:tipo, [ ["Telefone", 1], ["E-mail", 2] ])
+        - if @cliente.nome.blank?
+            = contato.select(:tipo, options_for_select(Contato::TIPO))
+        - else
+            = contato.label :valor, @cliente.contatos[n_contato].tipo_contato
         = contato.text_field :valor
+        - n_contato += 1
 
     %br
     = f.submit "Salvar"
