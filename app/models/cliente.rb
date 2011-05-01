@@ -17,8 +17,13 @@ class Cliente < ActiveRecord::Base
     query << "ordem_servico.situacao = #{search[:situacao]}" unless search[:situacao].blank?
     query << "ordem_servico.tipo_equipamento_id = #{search[:equipamento]}" unless search[:equipamento].blank?
 
-    find(:all, :joins => :ordem_servico, :conditions => query.join(" AND "))
+    find(:all,
+        :joins => 'LEFT JOIN ordem_servico on ordem_servico.cliente_id = clientes.id',
+        :conditions => query.join(" AND "))
   end
 
+  def self.has_os
+    find(:all, :joins => :ordem_servico, :conditions=> {:ordem_servico => {:situacao =>[1,2,3,4]}})
+  end
 end
 

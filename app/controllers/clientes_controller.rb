@@ -11,13 +11,7 @@ class ClientesController < ApplicationController
   end
 
   def index
-    @clientes = []
-
-    OrdemServico.all.each do |os|
-      @clientes << os.cliente
-    end
-
-    @clientes
+    @clientes = Cliente.has_os
   end
 
   def new

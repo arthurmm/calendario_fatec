@@ -8,9 +8,14 @@
         = f.label :email, "E-mail"
         = f.text_field :email
         %br
+        = f.label :group_id, "Grupo do usuário"
+        = f.select :group_id, options_from_collection_for_select(@grupos , 'id', 'name')
+        %br
         = f.label :password, "Senha"
         = f.password_field :password
         %br
         = f.label :password_confirmation, "Confirmar Senha"
         = f.password_field :password_confirmation
+        %br
         = f.submit "Salvar"
+

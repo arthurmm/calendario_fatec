@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @grupos = Group.all
+
   end
 
   def create
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+        @grupos = Group.all
   end
 
   def update
