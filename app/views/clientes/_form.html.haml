@@ -1,7 +1,8 @@
 -form_for(@cliente) do |f|
-    - unless @cliente.errors.empty?
-        - @cliente.errors.each do |msg|
-            %p= msg.last
+    .erros_de_validacao
+        - unless @cliente.errors.empty?
+            - @cliente.errors.each do |msg|
+                %p= msg.last
 
     = f.label :nome, "Nome"
     = f.text_field :nome
@@ -14,20 +15,37 @@
     = f.label :data_de_nascimento,  "Data de Nascimento"
     = f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
 
-    %br
     - n_contato = 0
-    =f.fields_for :contatos do |contato|
-        - if @cliente.nome.blank?
-            = contato.select(:tipo, options_for_select(Contato::TIPO))
-        - else
-            = contato.label :valor, @cliente.contatos[n_contato].tipo_contato
-        = contato.text_field :valor
-        - n_contato += 1
+    %div#contato
+        =f.fields_for :contatos do |contato|
+            %br
+            - if @cliente.nome.blank?
+                = contato.select(:tipo, options_for_select(Contato::TIPO))
+            - else
+                = contato.label :valor, @cliente.contatos[n_contato].tipo_contato
+            = contato.text_field :valor
+            - n_contato += 1
 
     %br
     = f.submit "Salvar"
+    
+
+- select_for_novo_contato = Contato::TIPO.to_a.map { |tipo| "<option value='#{tipo[1]}'>#{tipo[0]}</option>" }.to_s
+:javascript
+    novos_contatos = 1;
+    function appendNewContato(){
+        var select = '<div>';
+        select = select + '<select name="cliente[contatos_attributes][' + novos_contatos + '][tipo]">';
+        select = select + "#{select_for_novo_contato}";
+        select = select + '</select>';
+        select = select + '<input name="cliente[contatos_attributes][' + novos_contatos + '][valor]" type="text">';
+        select = select + '</div>';
+        $('contato').insert({ after : select});
+        novos_contatos += 1;        
+    };
 
 - content_for :submenu do
     %ul
+        %li=link_to "Adicionar Contato", 'javascript:void(0);', :onclick => 'appendNewContato()'
         %li=link_to "Voltar" , clientes_path
 

@@ -25,29 +25,12 @@
       - if @ordem_servico.tipo_pedido.blank?
         %tr
           %td= f.label :situacao, "Em orçamento"
-          %td= f.radio_button :situacao, "Em orçamento", :checked => true
+          %td= f.radio_button :situacao, OrdemServico::Situacao["Em orçamento"], :checked => true
       - else
-        %tr
-          %td= f.label :situacao, "Em orçamento"
-          %td= f.radio_button :situacao, "Em orçamento"
-        %tr
-          %td= f.label :situacao, "Aguardando aprovação"
-          %td= f.radio_button :situacao, "Aguardando aprovação"
-        %tr
-          %td= f.label :situacao, "Em conserto"
-          %td= f.radio_button :situacao, "Em conserto"
-        %tr
-          %td= f.label :situacao, "Aguardando pagamento"
-          %td= f.radio_button :situacao, "Aguardando pagamento"
-        %tr
-          %td= f.label :situacao, "Fechado"
-          %td= f.radio_button :situacao, "Fechado"
-        %tr
-          %td= f.label :situacao, "Cancelado pelo cliente"
-          %td= f.radio_button :situacao, "Cancelado pelo cliente"
-        %tr
-          %td= f.label :situacao, "Cancelado pelo atendente"
-          %td= f.radio_button :situacao, "Cancelado pelo atendente"
+        - OrdemServico::Situacao.each_pair do |k, v|
+          %tr
+            %td= f.label :situacao, k
+            %td= f.radio_button :situacao, v
 
     %br
     = f.label :descricao_equipamento, "Descrição do Equipamento"
