@@ -9,6 +9,7 @@
                 %strong Data de Nascimento:
                 %label= @cliente.data_de_nascimento
 
+    %br
     %h4 Contatos
     .contatos
         %table
@@ -16,12 +17,27 @@
                 %th
                 %th Forma de Contato
                 %th Exluir
+
             -@cliente.contatos.each do |contato|
                 %tr
                     %td=contato.tipo_contato
                     %td=contato.valor
                     %td=delete_link cliente_contato_path(contato), :confirm => "Quer deletar esse contato?", :method => :delete
-
+    %br
+    %h4 Ordens de serviços
+    %br
+    .ordem_servicos
+        %table
+            %tr
+                %th Selecione
+                %th Editar
+                %th Tipo Pedido
+                %th Cliente
+            -@cliente.ordem_servico.each do |ordem_servico|
+                %tr
+                    %td= select_link ordem_servico_path(ordem_servico.id)
+                    %td= edit_link edit_ordem_servico_path(ordem_servico.id)
+                    %td= ordem_servico.tipo_pedido
 
 -content_for :submenu do
     %ul
