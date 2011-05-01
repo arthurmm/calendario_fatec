@@ -1,0 +1,50 @@
+Clientes
+	Show
+!		Exibir o tipo de contato
+!               Listar a Ordem de Serviço do cliente
+	Adicionar Contato a um cliente
+!		Formulário de cadastro de novo contato
+	Buscas
+!		Por nome
+!		Por telefone
+!		Por RG
+!		Por tipo de pedido
+!		Por status do pedido
+!		Por tipo de Equipamento do pedido
+	Edição
+!		Não permitir a alteração do tipo do contato
+
+Tipos de Contato
+	CRU de tipos de contato
+
+Usuários
+	Adicionar grupo do usuário
+!	Traduzir mensagens em inglês para português
+
+Ordens de Serviço
+M	Adicionar técnico que fez o orçamento
+M	Adicionar técnico que executou a ordem de serviço
+	Buscas
+		Por tipo de pedido
+		Por status do pedido
+		Por tipo de Equipamento do pedido
+		Por valor do serviço (específico, de -> até)
+		Por número de série do equipamento
+		Por técnico
+
+Perfis de Usuários
+	Cadastrar perfis especificando as permissões
+	Buscas
+		Usuários do perfil
+
+M	Log
+
+Relatórios
+	Buscas (período, 
+		Por tipo de pedido
+		Por status do pedido
+		Por tipo de Equipamento do pedido
+		Por valor do serviço (específico, 
+		Por número de série do equipamento
+		Por técnico
+	
