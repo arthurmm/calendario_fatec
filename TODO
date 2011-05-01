@@ -35,16 +35,16 @@ M	Adicionar técnico que executou a ordem de serviço
 Perfis de Usuários
 	Cadastrar perfis especificando as permissões
 	Buscas
-		Usuários do perfil
+!		Usuários do perfil
 
 M	Log
 
 Relatórios
-	Buscas (período, 
+	Buscas (período,
 		Por tipo de pedido
 		Por status do pedido
 		Por tipo de Equipamento do pedido
-		Por valor do serviço (específico, 
+		Por valor do serviço (específico,
 		Por número de série do equipamento
 		Por técnico
-	
+
