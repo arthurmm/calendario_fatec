@@ -23,17 +23,11 @@ class TipoEquipamentoController < ApplicationController
   end
 
   def edit
-    @equipamento = TipoEquipamento.find(params[:id])
+
   end
 
   def update
-    @cliente = Cliente.find(params[:id])
 
-    if @cliente.update_attributes(params[:cliente])
-        redirect_to :action => :index
-      else
-        render :action => :edit
-    end
 
   end
 

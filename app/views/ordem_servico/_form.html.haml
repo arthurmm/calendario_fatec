@@ -9,8 +9,8 @@
     = f.label :tipo_equipamento_id, "Equipamento"
     = f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
 
-    %br 
-    Tipo da Ordem de Serviço 
+    %br
+    Tipo da Ordem de Serviço
     - if @ordem_servico.tipo_pedido.blank?
       = f.label :tipo_pedido, "Orçamento"
       = f.radio_button :tipo_pedido, 'Orçamento', :checked => true
@@ -72,7 +72,7 @@
       %br
       = f.label :valor_servico, "Valor Serviço"
       = f.text_field :valor_servico
-    
+
     %br
     = f.submit "Salvar"
 
