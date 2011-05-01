@@ -14,5 +14,9 @@ class OrdemServico < ActiveRecord::Base
     "Cancelado pelo atendente"  => 7
   }
 
+  def tipo_situacao
+    Situacao.invert[situacao.to_i]
+  end
+
 end
 
