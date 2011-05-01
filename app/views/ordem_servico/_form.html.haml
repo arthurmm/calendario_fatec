@@ -7,6 +7,9 @@
     = f.label :cliente_id, "Cliente"
     = f.select(:cliente_id, @clientes || @cliente)
     %br
+    = f.label :tipo_equipamento_id, "Tipo Equipamento"
+    = f.select(:tipo_equipamento_id, @equipamentos || @equipamentos)
+    %br
     = f.label :tipo_pedido, "Tipo da Ordem de Serviço (Orçamento ou Ordem de Serviço)"
     = f.radio_button :tipo_pedido, 'Orçamento'
     = f.radio_button :tipo_pedido, 'Ordem de Serviço'

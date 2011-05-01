@@ -13,6 +13,11 @@ class OrdemServicoController < ApplicationController
         @clientes = Cliente.all.map do |cliente|
           cliente = [ cliente.nome, cliente.id ]
         end
+
+       @equipamentos = TipoEquipamento.all do |equipamento|
+          equipamento = [equipamento.nome, equipamento.id]
+        end
+
       end
     end
 
@@ -46,3 +51,4 @@ class OrdemServicoController < ApplicationController
   end
 
 end
+
