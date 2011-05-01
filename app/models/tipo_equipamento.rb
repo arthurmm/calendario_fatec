@@ -1,4 +1,4 @@
 class TipoEquipamento < ActiveRecord::Base
-  belongs_to :ordem_servico
+  has_many :ordem_servico
 end
 

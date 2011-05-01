@@ -5,6 +5,7 @@ class OrdemServicoController < ApplicationController
   end
 
   def new
+    @equipamentos = TipoEquipamento.all
     @ordem_servico = OrdemServico.new
     if params[:cliente_id]
       cliente = Cliente.find(params[:cliente_id])
@@ -37,6 +38,7 @@ class OrdemServicoController < ApplicationController
 
   def edit
     @ordem_servico = OrdemServico.find(params[:id])
+    @tipo_equipamento = [ @ordem_servico.tipo_equipamento ]
     @cliente = [ [ @ordem_servico.cliente.nome, @ordem_servico.cliente.id ]]
   end
 

@@ -6,34 +6,73 @@
 
     = f.label :cliente_id, "Cliente"
     = f.select(:cliente_id, @clientes || @cliente)
+    = f.label :tipo_equipamento_id, "Equipamento"
+    = f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
+
     %br
-    = f.label :tipo_equipamento_id, "Tipo Equipamento"
-    = f.select(:tipo_equipamento_id, @equipamentos || @equipamentos)
+    Tipo da Ordem de Serviço
+    - if @ordem_servico.tipo_pedido.blank?
+      = f.label :tipo_pedido, "Orçamento"
+      = f.radio_button :tipo_pedido, 'Orçamento', :checked => true
+    - else
+      = f.label :tipo_pedido, "Orçamento"
+      = f.radio_button :tipo_pedido, 'Orçamento'
+      = f.label :tipo_pedido, "Ordem de Serviço"
+      = f.radio_button :tipo_pedido, 'Ordem de Serviço'
     %br
-    = f.label :tipo_pedido, "Tipo da Ordem de Serviço (Orçamento ou Ordem de Serviço)"
-    = f.radio_button :tipo_pedido, 'Orçamento'
-    = f.radio_button :tipo_pedido, 'Ordem de Serviço'
+    Situação
+    %table
+      - if @ordem_servico.tipo_pedido.blank?
+        %tr
+          %td= f.label :situacao, "Em orçamento"
+          %td= f.radio_button :situacao, "Em orçamento", :checked => true
+      - else
+        %tr
+          %td= f.label :situacao, "Em orçamento"
+          %td= f.radio_button :situacao, "Em orçamento"
+        %tr
+          %td= f.label :situacao, "Aguardando aprovação"
+          %td= f.radio_button :situacao, "Aguardando aprovação"
+        %tr
+          %td= f.label :situacao, "Em conserto"
+          %td= f.radio_button :situacao, "Em conserto"
+        %tr
+          %td= f.label :situacao, "Aguardando pagamento"
+          %td= f.radio_button :situacao, "Aguardando pagamento"
+        %tr
+          %td= f.label :situacao, "Fechado"
+          %td= f.radio_button :situacao, "Fechado"
+        %tr
+          %td= f.label :situacao, "Cancelado pelo cliente"
+          %td= f.radio_button :situacao, "Cancelado pelo cliente"
+        %tr
+          %td= f.label :situacao, "Cancelado pelo atendente"
+          %td= f.radio_button :situacao, "Cancelado pelo atendente"
+
     %br
     = f.label :descricao_equipamento, "Descrição do Equipamento"
     = f.text_field :descricao_equipamento
     %br
-    = f.label :descricao_defeito, "Descrição Defeito"
-    = f.text_field :descricao_defeito
-    %br
-    = f.label :descricao_servico_realizado, "Descrição do Serviço Realizado"
-    = f.text_field :descricao_servico_realizado
-    %br
-    = f.label :diagnostico_tecnico, "Diagnóstico do Técnico"
-    = f.text_field :diagnostico_tecnico
-    %br
     = f.label :numero_serie_equipamento, "Número série do Equipamento Orçado"
     = f.text_field :numero_serie_equipamento
     %br
-    = f.label :descricao_pecas, "Descrição das Peças utilizadas"
-    = f.text_field :descricao_pecas
-    %br
-    = f.label :valor_servico, "Valor Serviço"
-    = f.text_field :valor_servico
+    = f.label :descricao_defeito, "Descrição Defeito"
+    = f.text_area :descricao_defeito, :cols => 40, :rows => 10
+
+    - unless @ordem_servico.tipo_pedido.blank?
+      %br
+      = f.label :descricao_servico_realizado, "Descrição do Serviço Realizado"
+      = f.text_field :descricao_servico_realizado
+      %br
+      = f.label :diagnostico_tecnico, "Diagnóstico do Técnico"
+      = f.text_field :diagnostico_tecnico
+      %br
+      = f.label :descricao_pecas, "Descrição das Peças utilizadas"
+      = f.text_field :descricao_pecas
+      %br
+      = f.label :valor_servico, "Valor Serviço"
+      = f.text_field :valor_servico
+
     %br
     = f.submit "Salvar"
 
