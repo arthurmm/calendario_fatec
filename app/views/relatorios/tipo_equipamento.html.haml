@@ -1,0 +1,13 @@
+.tipo_equipamento
+  %h1 Pedidos por Equipamento
+  %table
+    %th Equipamento
+    %th Quantidade
+    - @tipo_equipamento.each_pair do |k, v|
+      %tr
+        %td
+          = k.nome
+        %td
+          = v
+        %td
+          = link_to "Listar", ordem_servico_search_do_path('tipo_equipamento' => k.id) 

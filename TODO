@@ -80,12 +80,12 @@ Relatórios
 			Situação anterior => Situação posterior => Tempo médio => Tempo máximo => Tempo minímo
 !		Por tipo de pedido
 			Quantidade de orçamentos que se transformaram em ordem de serviço
-		Por situação do pedido
-			Situação => Quantidade da ordem de serviço
-			Link de uma lista com as ordens de serviço com a situação específica
-		Por tipo de Equipamento do pedido
-			Tipo de Equipamento => Quantidade da ordem de serviço
-			Link de uma lista com as ordens de serviço com o equipamento específico
+!		Por situação do pedido
+!			Situação => Quantidade da ordem de serviço
+!			Link de uma lista com as ordens de serviço com a situação específica
+!		Por tipo de Equipamento do pedido
+!			Tipo de Equipamento => Quantidade da ordem de serviço
+!			Link de uma lista com as ordens de serviço com o equipamento específico
 		Por valor do serviço (específico e intervalo)
 			Agrupamento de ordens de serviço por intervalo de valores (0 : 100, 101 : 200, 201 : 300, 301 : 400, ...)
 			Link de uma lista com as ordens de serviço com o equipamento específico
