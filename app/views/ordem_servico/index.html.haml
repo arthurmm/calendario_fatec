@@ -10,8 +10,4 @@
                 %td= edit_link edit_ordem_servico_path(ordem_servico.id)
                 %td= ordem_servico.tipo_pedido
                 %td= ordem_servico.cliente.nome unless ordem_servico.cliente.nil?
-                
-- content_for :submenu do
-    %ul
-        %li= link_to "Cadastrar", new_ordem_servico_path
 

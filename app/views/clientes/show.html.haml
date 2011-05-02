@@ -30,10 +30,9 @@
     .ordem_servicos
         %table
             %tr
-                %th Selecione
-                %th Editar
+                %th
+                %th
                 %th Tipo Pedido
-                %th Cliente
             -@cliente.ordem_servico.each do |ordem_servico|
                 %tr
                     %td= select_link ordem_servico_path(ordem_servico.id)
@@ -44,5 +43,4 @@
     %ul
         %li= link_to "Adicionar Contato", new_cliente_contato_path(@cliente)
         %li= link_to "Adicionar OS", new_cliente_ordem_servico_path(@cliente)
-        %li= link_to "Voltar", clientes_path
 
