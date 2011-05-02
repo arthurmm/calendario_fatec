@@ -13,6 +13,12 @@ Clientes
 !		Por tipo de Equipamento do pedido
 	Edição
 !		Não permitir a alteração do tipo do contato
+	Ordem de Serviço
+!		Exibir a coluna equipamento na listagem
+!		Exibir a coluna situação
+!		Remoção da coluna com o nome do cliente
+	Cadastro
+		Redireciona para tela Show do cliente
 
 Tipos de Contato
 	CRU de tipos de contato
@@ -30,7 +36,36 @@ M	Adicionar técnico que executou a ordem de serviço
 !		Por tipo de Equipamento do pedido
 !		Por valor do serviço (de -> até, >=, <=)
 !		Por número de série do equipamento
-!  Alterar campo valor serviço para :decimal
+!	Alterar campo valor serviço para :decimal
+	Adicionar link para o cliente na tela da ordem de serviço
+	Adicionar peças que foram usadas no conserto
+	Adicionar validadores por situação
+		Quando tipo de ordem = Orçamento
+			Situações disponíveis
+				Cancelado pelo cliente
+				Orçamento
+				Aguardando aprovação
+		Quando tipo de ordem = Ordem de Serviço
+			Situações disponíveis
+				Cancelado pelo atendente 	
+				Aguardando pagamento 	
+				Em conserto 	
+				Fechado
+	Enviar email quando a ordem de serviço for orçada e quando estiver fechado
+	Link para adicionar um novo tipo de equipamento
+	Show
+		Link para editar
+		Listar o histórico da Ordem de Serviço
+	Cadastrar
+		Gerar o timestamp da ordem de serviço, não alterável para podermos controlar o equipamento a ser consertado com a ordem
+	Editar
+		Descrição do defeito não é alterável
+	Adicionar campo descrição do estado da ordem de serviço (vulgo histórico) (utilizado para especificar quando a ordem de serviço mudar de estado)
+	Adicionar nova situação = Aguardando orçamento
+	Adicionar nova situação = Retirado pelo cliente
+	Alterar situação Fechado => Aguardando retirada do cliente
+M	Validação das regras de situação
+	Adicionar botão Voltar no submenu
 
 Perfis de Usuários
 	Cadastrar perfis especificando as permissões
@@ -40,14 +75,24 @@ Perfis de Usuários
 M	Log
 
 Relatórios
-	Buscas
+	Ordem de Serviço (por data específica e por intervalo)
+		Tempo médio de alteração de Situação (por data)
+			Situação anterior => Situação posterior => Tempo médio => Tempo máximo => Tempo minímo
 		Por tipo de pedido
-		Por status do pedido
+			Quantidade de orçamentos que se transformaram em ordem de serviço
+		Por situação do pedido
+			Situação => Quantidade da ordem de serviço
+			Link de uma lista com as ordens de serviço com a situação específica
 		Por tipo de Equipamento do pedido
-		Por valor do serviço (específico,
-		Por número de série do equipamento
-		Por técnico
-
+			Tipo de Equipamento => Quantidade da ordem de serviço
+			Link de uma lista com as ordens de serviço com o equipamento específico
+		Por valor do serviço (específico e intervalo)
+			Agrupamento de ordens de serviço por intervalo de valores (0 : 100, 101 : 200, 201 : 300, 301 : 400, ...)
+			Link de uma lista com as ordens de serviço com o equipamento específico
+	
+	Clientes (por data específica e por intervalo)
+		Variação de novos clientes por intervalo de tempo (dia, semana, mês, bimestre, trimestre, quadrimestre, semestre, ano, 5 anos, 10 anos)
+		
 Layout
-  Acertar Formulários
-  Adicionar validação por javascript
+	Acertar Formulários
+	Adicionar validação por javascript
