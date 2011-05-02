@@ -25,12 +25,12 @@ Ordens de Serviço
 M	Adicionar técnico que fez o orçamento
 M	Adicionar técnico que executou a ordem de serviço
 	Buscas
-		Por tipo de pedido
-		Por status do pedido
-		Por tipo de Equipamento do pedido
-		Por valor do serviço (específico, de -> até)
-		Por número de série do equipamento
-		Por técnico
+!		Por tipo de pedido
+!		Por situação do pedido
+!		Por tipo de Equipamento do pedido
+!		Por valor do serviço (de -> até, >=, <=)
+!		Por número de série do equipamento
+!  Alterar campo valor serviço para :decimal
 
 Perfis de Usuários
 	Cadastrar perfis especificando as permissões
@@ -40,7 +40,7 @@ Perfis de Usuários
 M	Log
 
 Relatórios
-	Buscas (período,
+	Buscas
 		Por tipo de pedido
 		Por status do pedido
 		Por tipo de Equipamento do pedido
@@ -48,3 +48,6 @@ Relatórios
 		Por número de série do equipamento
 		Por técnico
 
+Layout
+  Acertar Formulários
+  Adicionar validação por javascript
