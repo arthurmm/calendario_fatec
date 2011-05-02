@@ -17,7 +17,7 @@
             #leftmenu_top
             #leftmenu_main
                 %h3 Sub-menu
-                = yield :submenu
+                =render :partial => 'submenu' rescue nil
             #leftmenu_bottom
 
         #content
