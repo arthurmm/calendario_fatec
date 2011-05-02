@@ -23,7 +23,7 @@ class Cliente < ActiveRecord::Base
   end
 
   def self.has_os
-    find(:all, :joins => :ordem_servico, :conditions=> {:ordem_servico => {:situacao =>[1,2,3,4]}})
+    find(:all, :joins => :ordem_servico, :conditions=> {:ordem_servico => {:situacao =>[1,2,3,4]}}).uniq
   end
 end
 
