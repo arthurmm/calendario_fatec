@@ -13,6 +13,10 @@ Clientes
 !		Por tipo de Equipamento do pedido
 	Edição
 !		Não permitir a alteração do tipo do contato
+	Ordem de Serviço
+!		Exibir a coluna equipamento na listagem
+!		Exibir a coluna situação
+!		Remoção da coluna com o nome do cliente
 
 Tipos de Contato
 	CRU de tipos de contato
@@ -49,5 +53,5 @@ Relatórios
 		Por técnico
 
 Layout
-  Acertar Formulários
-  Adicionar validação por javascript
+	Acertar Formulários
+	Adicionar validação por javascript
