@@ -33,3 +33,6 @@
             %td= @ordem_servico.valor_servico
         %tr
 
+- content_for :submenu do
+    %li=link_to "Editar OS", edit_ordem_servico_path(@ordem_servico.id)
+

@@ -3,11 +3,13 @@
     - unless @ordem_servico.errors.empty?
       - @ordem_servico.errors.full_messages.each  do |msg|
         %p= msg
-
+    = f.label :codigo, "Código da OS"
+    = f.text_field :codigo, :value => "#{Time.now.utc.iso8601.gsub('-', '').gsub(':', '')}", :readonly => "true"		
     = f.label :cliente_id, "Cliente"
     = f.select(:cliente_id, @clientes || @cliente)
     = f.label :tipo_equipamento_id, "Equipamento"
     = f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
+    = link_to "+", new_tipo_equipamento_path
 
     %br
     Tipo da Ordem de Serviço

@@ -1,7 +1,7 @@
 class OrdemServico < ActiveRecord::Base
   belongs_to :cliente
   belongs_to :tipo_equipamento
-
+	after_save :enviar_email
   TipoPedido = [ 'Orçamento', 'Ordem de Serviço' ]
 
   Situacao = {
@@ -28,6 +28,17 @@ class OrdemServico < ActiveRecord::Base
     query << "valor_servico <= #{search['valor']['1']}" unless search['valor']['1'].blank?
     find(:all, :conditions => query.join(" AND "))
   end
+	
+	def enviar_email(record)
+		email = ""
+		record.cliente.contatos.each do |c|
+			email = c.valor if c.tipo == 2
+		end
+	
+		unless email.blank? && record.situacao == 2
+				OsMailer.manda(email)
+		end
+	end
 
 
 end

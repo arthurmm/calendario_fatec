@@ -23,7 +23,7 @@ class ClientesController < ApplicationController
     @cliente = Cliente.new(params[:cliente])
 
     if @cliente.save
-      redirect_to :action => "index"
+      redirect_to :action => "show", :id => @cliente.id
     else
       render :action => "new"
     end

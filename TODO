@@ -18,7 +18,7 @@ Clientes
 !		Exibir a coluna situação
 !		Remoção da coluna com o nome do cliente
 	Cadastro
-		Redireciona para tela Show do cliente
+!		Redireciona para tela Show do cliente
 
 Tipos de Contato
 	CRU de tipos de contato
@@ -37,7 +37,7 @@ M	Adicionar técnico que executou a ordem de serviço
 !		Por valor do serviço (de -> até, >=, <=)
 !		Por número de série do equipamento
 !	Alterar campo valor serviço para :decimal
-	Adicionar link para o cliente na tela da ordem de serviço
+!	Adicionar link para o cliente na tela da ordem de serviço
 	Adicionar peças que foram usadas no conserto
 	Adicionar validadores por situação
 		Quando tipo de ordem = Orçamento
@@ -52,12 +52,12 @@ M	Adicionar técnico que executou a ordem de serviço
 				Em conserto 	
 				Fechado
 	Enviar email quando a ordem de serviço for orçada e quando estiver fechado
-	Link para adicionar um novo tipo de equipamento
+!	Link para adicionar um novo tipo de equipamento
 	Show
-		Link para editar
+!		Link para editar
 		Listar o histórico da Ordem de Serviço
 	Cadastrar
-		Gerar o timestamp da ordem de serviço, não alterável para podermos controlar o equipamento a ser consertado com a ordem
+!		Gerar o timestamp da ordem de serviço, não alterável para podermos controlar o equipamento a ser consertado com a ordem
 	Editar
 		Descrição do defeito não é alterável
 	Adicionar campo descrição do estado da ordem de serviço (vulgo histórico) (utilizado para especificar quando a ordem de serviço mudar de estado)
