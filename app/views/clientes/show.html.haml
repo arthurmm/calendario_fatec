@@ -30,15 +30,18 @@
     .ordem_servicos
         %table
             %tr
-                %th Selecione
-                %th Editar
+                %th
+                %th
                 %th Tipo Pedido
-                %th Cliente
+                %th Situação
+                %th Equipamento
             -@cliente.ordem_servico.each do |ordem_servico|
                 %tr
                     %td= select_link ordem_servico_path(ordem_servico.id)
                     %td= edit_link edit_ordem_servico_path(ordem_servico.id)
                     %td= ordem_servico.tipo_pedido
+                    %td= ordem_servico.tipo_situacao
+                    %td= ordem_servico.tipo_equipamento.nome
 
 -content_for :submenu do
     %ul
