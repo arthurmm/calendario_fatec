@@ -24,8 +24,10 @@ class OrdemServico < ActiveRecord::Base
     query << "tipo_equipamento_id = '#{search[:tipo_equipamento]}' " unless search[:tipo_equipamento].blank?
     query << "situacao = '#{search[:situacao]}' " unless search[:situacao].blank?
     query << "numero_serie_equipamento = '#{search[:numero_serie_equipamento]}' " unless search[:numero_serie_equipamento].blank?
-    query << "valor_servico >= #{search['valor']['0']}" unless search['valor']['0'].blank?
-    query << "valor_servico <= #{search['valor']['1']}" unless search['valor']['1'].blank?
+    unless search['valor'].blank?
+      query << "valor_servico >= #{search['valor']['0']}" unless search['valor']['0'].blank?
+      query << "valor_servico <= #{search['valor']['1']}" unless search['valor']['1'].blank?
+    end
     find(:all, :conditions => query.join(" AND "))
   end
 	

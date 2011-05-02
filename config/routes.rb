@@ -12,6 +12,9 @@ Aps3::Application.routes.draw do
   get "ordem_servico/search"
   get "ordem_servico/search_do"
 
+  get "relatorios/tipo_pedido"
+  get "relatorios/index"
+
   resources :clientes do
     resources :contato
     resources :ordem_servico

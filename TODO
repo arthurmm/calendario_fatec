@@ -78,7 +78,7 @@ Relatórios
 	Ordem de Serviço (por data específica e por intervalo)
 		Tempo médio de alteração de Situação (por data)
 			Situação anterior => Situação posterior => Tempo médio => Tempo máximo => Tempo minímo
-		Por tipo de pedido
+!		Por tipo de pedido
 			Quantidade de orçamentos que se transformaram em ordem de serviço
 		Por situação do pedido
 			Situação => Quantidade da ordem de serviço

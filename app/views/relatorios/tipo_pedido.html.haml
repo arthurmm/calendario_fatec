@@ -1,0 +1,13 @@
+.tipo_pedidos
+  %h1 Pedidos por Tipo de Pedidos
+  %table
+    %th Tipo
+    %th Quantidade
+    - @tipo_pedidos.each_pair do |k, v|
+      %tr
+        %td
+          = k
+        %td
+          = v
+        %td
+          = link_to "Listar", ordem_servico_search_do_path(:tipo_pedido => k) 
