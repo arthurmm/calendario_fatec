@@ -1,7 +1,9 @@
 class OrdemServico < ActiveRecord::Base
   belongs_to :cliente
   belongs_to :tipo_equipamento
-	after_save :enviar_email
+	has_many :historicos
+	#after_save :enviar_email
+
   TipoPedido = [ 'Orçamento', 'Ordem de Serviço' ]
 
   Situacao = {

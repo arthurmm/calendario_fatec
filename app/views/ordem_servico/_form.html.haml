@@ -57,6 +57,10 @@
       %br
       = f.label :valor_servico, "Valor Serviço"
       = f.text_field :valor_servico
+    %br
+    =f.fields_for @historico do |historico|
+      = historico.label :descricao, "Descrição da situação"
+      = historico.text_field :descricao
 
     %br
     = f.submit "Salvar"
