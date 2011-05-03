@@ -1,0 +1,13 @@
+.tipo_situacao
+  %h1 Pedidos por Tipo de Situação
+  %table
+    %th Situação
+    %th Quantidade
+    - @tipo_situacao.each_pair do |k, v|
+      %tr
+        %td
+          = OrdemServico::Situacao.invert[k.to_i]
+        %td
+          = v
+        %td
+          = link_to "Listar", ordem_servico_search_do_path('situacao' => k) 
