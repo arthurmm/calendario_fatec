@@ -1,3 +1,3 @@
 .grupo.new
   %h1 Cadastro de Novo Grupo
-  = render "group/form"
+  = render :partial => "group/form", :locals => {:ac => "create"}

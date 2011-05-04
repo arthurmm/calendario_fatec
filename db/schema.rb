@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20110503233912) do
     t.datetime "updated_at"
     t.string   "cpf"
     t.string   "nome_conhecido"
-    t.string   "sexo",               :limit => 1
-    t.string   "tipo",               :limit => 1
+    t.string   "sexo",               :limit => nil
+    t.string   "tipo",               :limit => nil
     t.string   "cep"
     t.string   "logradouro"
     t.string   "nr_logradouro"
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(:version => 20110503233912) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "grupo_privileges",         :default => 0
-    t.integer  "usuario_privileges",       :default => 0
-    t.integer  "cliente_privileges",       :default => 0
-    t.integer  "ordem_servico_privileges", :default => 0
-    t.integer  "equipamento_privileges",   :default => 0
-    t.integer  "relatorios_privileges",    :default => 0
+    t.integer  "grupo_privileges"
+    t.integer  "usuario_privileges"
+    t.integer  "cliente_privileges"
+    t.integer  "ordem_servico_privileges"
+    t.integer  "equipamento_privileges"
+    t.integer  "relatorios_privileges"
   end
 
   create_table "historicos", :force => true do |t|
@@ -67,13 +67,12 @@ ActiveRecord::Schema.define(:version => 20110503233912) do
     t.string   "diagnostico_tecnico"
     t.string   "numero_serie_equipamento"
     t.string   "descricao_pecas"
-    t.decimal  "valor_servico",               :precision => 8, :scale => 2
+    t.decimal  "valor_servico"
     t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "situacao"
     t.integer  "tipo_equipamento_id"
-    t.integer  "usuario_que_orcou_id"
     t.string   "codigo"
   end
 

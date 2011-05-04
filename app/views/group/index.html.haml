@@ -17,49 +17,49 @@
         %td= group.name
         %td
           ="Criar" if group.privilegio_grupos.include? :criar
-          <br>
+          %br
           ="Editar" if group.privilegio_grupos.include? :editar
-          <br>
+          %br
           ="Visualizar" if group.privilegio_grupos.include? :consulta
-          <br>
+          %br
           ="Apagar" if group.privilegio_grupos.include? :apagar
         %td
           ="Criar" if group.privilegio_usuarios.include? :criar
-          <br>
+          %br
           ="Editar" if group.privilegio_usuarios.include? :editar
-          <br>
+          %br
           ="Visualizar" if group.privilegio_usuarios.include? :consulta
-          <br>
+          %br
           ="Apagar" if group.privilegio_usuarios.include? :apagar
         %td
           ="Criar" if group.privilegio_clientes.include? :criar
-          <br>
+          %br
           ="Editar" if group.privilegio_clientes.include? :editar
-          <br>
+          %br
           ="Visualizar" if group.privilegio_clientes.include? :consulta
-          <br>
+          %br
           ="Apagar" if group.privilegio_clientes.include? :apagar
         %td
           ="Criar" if group.privilegio_ordem_servico.include? :criar
-          <br>
+          %br
           ="Editar" if group.privilegio_ordem_servico.include? :editar
-          <br>
+          %br
           ="Visualizar" if group.privilegio_ordem_servico.include? :consulta
-          <br>
+          %br
           ="Apagar" if group.privilegio_ordem_servico.include? :apagar
         %td
           ="Criar" if group.privilegio_equipamentos.include? :criar
-          <br>
+          %br
           ="Editar" if group.privilegio_equipamentos.include? :editar
-          <br>
+          %br
           ="Visualizar" if group.privilegio_equipamentos.include? :consulta
-          <br>
+          %br
           ="Apagar" if group.privilegio_equipamentos.include? :apagar
         %td
           ="Criar" if group.privilegio_relatorios.include? :criar
-          <br>
+          %br
           ="Editar" if group.privilegio_relatorios.include? :editar
-          <br>
+          %br
           ="Visualizar" if group.privilegio_relatorios.include? :consulta
-          <br>
+          %br
           ="Apagar" if group.privilegio_relatorios.include? :apagar

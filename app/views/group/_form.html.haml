@@ -1,4 +1,4 @@
--form_for @group do |f|
+-form_for @group, :url => {:controller => "group", :action=> ac} do |f|
     .erros_de_validacao
         - unless @group.errors.empty?
             - @group.errors.each do |msg|
