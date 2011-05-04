@@ -37,11 +37,13 @@
     %h2 Histórico
     %table
         %th  Situação
-        %th  Descrição        
+        %th  Descrição
+        %th  Data   
         -@ordem_servico.historicos.each do |historico|
             %tr
                 %td= OrdemServico::Situacao.invert[historico.situacao.to_i]
                 %td= historico.descricao
+                %td= historico.created_at.strftime('%d/%m/%Y')
         
 
 - content_for :submenu do
