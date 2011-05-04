@@ -2,6 +2,7 @@
     %table
         %th
         %th
+        %th Código da OS
         %th Cliente
         %th Tipo Pedido
         %th Situação
@@ -10,6 +11,7 @@
             %tr
                 %td= select_link ordem_servico_path(ordem_servico.id)
                 %td= edit_link edit_ordem_servico_path(ordem_servico.id)
+                %td= ordem_servico.codigo
                 %td= link_to_unless ordem_servico.cliente.nil?, ordem_servico.cliente.nome, cliente_path(ordem_servico.cliente.id)
                 %td= ordem_servico.tipo_pedido
                 %td= ordem_servico.tipo_situacao

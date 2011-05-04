@@ -1,67 +1,81 @@
 .ordem_servico.insert
-  -form_for @ordem_servico do |f|
-    - unless @ordem_servico.errors.empty?
-      - @ordem_servico.errors.full_messages.each  do |msg|
-        %p= msg
-    = f.label :codigo, "Código da OS"
-    = f.text_field :codigo, :value => "#{Time.now.utc.iso8601.gsub('-', '').gsub(':', '')}", :readonly => "true"		
-    = f.label :cliente_id, "Cliente"
-    = f.select(:cliente_id, @clientes || @cliente)
-    = f.label :tipo_equipamento_id, "Equipamento"
-    = f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
-    = link_to "+", new_tipo_equipamento_path
+  %table
+    -form_for @ordem_servico do |f|
+      %tr
+      - unless @ordem_servico.errors.empty?
+        - @ordem_servico.errors.full_messages.each  do |msg|
+          %td= msg
+          %td
+          %td
+          %td
+      %tr
+        %td= f.label :codigo, "Código da OS"
+        %td= f.text_field :codigo, :value => "#{Time.now.utc.iso8601.gsub('-', '').gsub(':', '')}", :readonly => "true"	
+      %tr	
+        %td= f.label :cliente_id, "Cliente"
+        %td= f.select(:cliente_id, @clientes || @cliente)
+        %td= link_to(image_tag('add.png', {:class=>"link_button" }), new_cliente_path)  
+      %tr
+        %td= f.label :tipo_equipamento_id, "Equipamento"
+        %td= f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
+        %td= link_to(image_tag('add.png', {:class=>"link_button" }), new_tipo_equipamento_path)
 
-    %br
-    Tipo da Ordem de Serviço
-    - if @ordem_servico.tipo_pedido.blank?
-      = f.label :tipo_pedido, "Orçamento"
-      = f.radio_button :tipo_pedido, 'Orçamento', :checked => true
-    - else
-      = f.label :tipo_pedido, "Orçamento"
-      = f.radio_button :tipo_pedido, 'Orçamento'
-      = f.label :tipo_pedido, "Ordem de Serviço"
-      = f.radio_button :tipo_pedido, 'Ordem de Serviço'
-    %br
-    Situação
-    %table
+      %tr
+      Tipo da Ordem de Serviço
       - if @ordem_servico.tipo_pedido.blank?
-        %tr
-          %td= f.label :situacao, "Em orçamento"
-          %td= f.radio_button :situacao, OrdemServico::Situacao["Em orçamento"], :checked => true
+        %td= f.label :tipo_pedido, "Orçamento"
+        %td= f.radio_button :tipo_pedido, 'Orçamento', :checked => true
       - else
-        - OrdemServico::Situacao.each_pair do |k, v|
-          %tr
-            %td= f.label :situacao, k
-            %td= f.radio_button :situacao, v
+        %td= f.label :tipo_pedido, "Orçamento"
+        %td= f.radio_button :tipo_pedido, 'Orçamento'
+        %td= f.label :tipo_pedido, "Ordem de Serviço"
+        %td= f.radio_button :tipo_pedido, 'Ordem de Serviço'
 
-    %br
-    = f.label :descricao_equipamento, "Descrição do Equipamento"
-    = f.text_field :descricao_equipamento
-    %br
-    = f.label :numero_serie_equipamento, "Número série do Equipamento Orçado"
-    = f.text_field :numero_serie_equipamento
-    %br
-    = f.label :descricao_defeito, "Descrição Defeito"
-    = f.text_area :descricao_defeito, :cols => 40, :rows => 10
+      %tr
+        %td Situação
+        %td
+          - if @ordem_servico.tipo_pedido.blank?
+            = f.label :situacao, "Em orçamento"
+            = f.radio_button :situacao, OrdemServico::Situacao["Em orçamento"], :checked => true
+          - else
+            - OrdemServico::Situacao.each_pair do |k, v|
+              = f.label :situacao, k
+              = f.radio_button :situacao, v
 
-    - unless @ordem_servico.tipo_pedido.blank?
-      %br
-      = f.label :descricao_servico_realizado, "Descrição do Serviço Realizado"
-      = f.text_field :descricao_servico_realizado
-      %br
-      = f.label :diagnostico_tecnico, "Diagnóstico do Técnico"
-      = f.text_field :diagnostico_tecnico
-      %br
-      = f.label :descricao_pecas, "Descrição das Peças utilizadas"
-      = f.text_field :descricao_pecas
-      %br
-      = f.label :valor_servico, "Valor Serviço"
-      = f.text_field :valor_servico
-    %br
-    =f.fields_for @historico do |historico|
-      = historico.label :descricao, "Descrição da situação"
-      = historico.text_field :descricao
+      %tr
+        %td= f.label :descricao_equipamento, "Descrição do Equipamento"
+        %td= f.text_field :descricao_equipamento
 
-    %br
-    = f.submit "Salvar"
+      %tr
+        %td= f.label :numero_serie_equipamento, "Número série do Equipamento Orçado"
+        %td= f.text_field :numero_serie_equipamento
+
+      %tr
+        %td= f.label :descricao_defeito, "Descrição Defeito"
+        %td= f.text_area :descricao_defeito, :cols => 40, :rows => 10
+
+      - unless @ordem_servico.tipo_pedido.blank?
+        %tr
+          %td= f.label :descricao_servico_realizado, "Descrição do Serviço Realizado"
+          %td= f.text_field :descricao_servico_realizado
+
+        %tr
+          %td= f.label :diagnostico_tecnico, "Diagnóstico do Técnico"
+          %td= f.text_field :diagnostico_tecnico
+
+        %tr
+          %td= f.label :descricao_pecas, "Descrição das Peças utilizadas"
+          %td= f.text_field :descricao_pecas
+
+        %tr
+          %td= f.label :valor_servico, "Valor Serviço"
+          %td= f.text_field :valor_servico
+
+      =f.fields_for @historico do |historico|
+        %tr
+          %td= historico.label :descricao, "Descrição da situação"
+          %td= historico.text_field :descricao
+
+      %tr
+      %td= f.submit "Salvar"
 

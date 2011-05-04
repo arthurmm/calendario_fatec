@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502234030) do
+ActiveRecord::Schema.define(:version => 20110503011340) do
 
   create_table "clientes", :force => true do |t|
     t.string   "nome"
@@ -20,8 +20,15 @@ ActiveRecord::Schema.define(:version => 20110502234030) do
     t.datetime "updated_at"
     t.string   "cpf"
     t.string   "nome_conhecido"
-    t.string   "sexo",               :limit => 1
-    t.string   "tipo",               :limit => 1
+    t.string   "sexo",               :limit => nil
+    t.string   "tipo",               :limit => nil
+    t.string   "cep"
+    t.string   "logradouro"
+    t.string   "nr_logradouro"
+    t.string   "cidade"
+    t.string   "estado"
+    t.string   "complemento"
+    t.string   "bairro"
   end
 
   create_table "contatos", :force => true do |t|
@@ -54,13 +61,12 @@ ActiveRecord::Schema.define(:version => 20110502234030) do
     t.string   "diagnostico_tecnico"
     t.string   "numero_serie_equipamento"
     t.string   "descricao_pecas"
-    t.decimal  "valor_servico",               :precision => 8, :scale => 2
+    t.decimal  "valor_servico"
     t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "situacao"
     t.integer  "tipo_equipamento_id"
-    t.integer  "usuario_que_orcou_id"
     t.string   "codigo"
   end
 
