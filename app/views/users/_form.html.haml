@@ -1,7 +1,7 @@
 .user.insert
     = form_for(@user) do |f|
-        -@user.errors.full_messages.each do |msg|
-            %p= msg
+        -@user.errors.each do |msg|
+            %p= msg.last
         = f.label :name, "Nome"
         = f.text_field :name
         %br
@@ -9,7 +9,7 @@
         = f.text_field :email
         %br
         = f.label :group_id, "Grupo do usuário"
-        = f.select :group_id, options_from_collection_for_select(@grupos , 'id', 'name')
+        = f.select :group_id, options_from_collection_for_select(@grupos , 'id', 'name', @user.group.id), :include_blank => true
         %br
         = f.label :password, "Senha"
         = f.password_field :password
