@@ -1,8 +1,9 @@
 .ordem_servico.insert
     -form_for @ordem_servico do |f|
         - unless @ordem_servico.errors.empty?
-            - @ordem_servico.errors.each  do |msg|
-                = logger.info msg.last
+            .erros_de_validacao
+                - @ordem_servico.errors.each  do |msg|
+                    %p= msg.last
         %table           
             %tr
                 %td= f.label :codigo, "Código da OS"
@@ -50,7 +51,7 @@
 
             %tr
                 %td= f.label :descricao_defeito, "Descrição Defeito"
-                %td= f.text_area :descricao_defeito, :cols => 40, :rows => 10
+                %td= f.text_area :descricao_defeito, :cols => 40, :rows => 3, :class=>"obrigatorio"
 
             - unless @ordem_servico.tipo_pedido.blank?
                 %tr
@@ -72,7 +73,7 @@
             =f.fields_for @historico do |historico|
                 %tr
                     %td= historico.label :descricao, "Descrição da situação"
-                    %td= historico.text_field :descricao
+                    %td= historico.text_area:descricao, :class=> "obrigatorio", :cols => 40, :rows => 3
 
         %tr
             %td= f.submit "Salvar"

@@ -280,3 +280,8 @@ input.obrigatorio:focus, .obrigatorio:hover
   background-color:#F86473;
 }
 
+.erros_de_validacao
+{
+    display:block; border:solid 2px red; color:red; margin-left:20px; width:90%
+}
+

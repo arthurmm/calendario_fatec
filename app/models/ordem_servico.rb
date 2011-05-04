@@ -2,7 +2,11 @@ class OrdemServico < ActiveRecord::Base
   belongs_to :cliente
   belongs_to :tipo_equipamento
 	has_many :historicos
+  accepts_nested_attributes_for :historicos
+
 	after_save { |record| enviar_email(record) }
+  
+  validates_presence_of :descricao_defeito, :message => "Campo de descrição do defeito é obrigatorio."
 
   TipoPedido = [ 'Orçamento', 'Ordem de Serviço' ]
 

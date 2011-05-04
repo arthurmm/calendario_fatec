@@ -48,7 +48,6 @@ class OrdemServicoController < ApplicationController
       redirect_to :action => "index"
     else
       @equipamentos = TipoEquipamento.all
-      @ordem_servico = OrdemServico.new
       @historico = Historico.new
       @clientes = Cliente.all.map do |cliente|
         cliente = [ cliente.nome, cliente.id ]
@@ -74,8 +73,12 @@ class OrdemServicoController < ApplicationController
     if @ordem_servico.update_attributes(params[:ordem_servico])
       redirect_to :action => 'index'
     else
-      flash[:error] = 'Houve algum erro no atualização dos campos'
-      redirect_to :action => 'edit'
+      @equipamentos = TipoEquipamento.all
+      @historico = Historico.new
+      @clientes = Cliente.all.map do |cliente|
+        cliente = [ cliente.nome, cliente.id ]
+      end
+      render :action => 'edit'
     end
   end
 
