@@ -1,29 +1,30 @@
 .search.ordem_servico
     %h2  Busca de Ordem de Serviço
-    -form_tag(ordem_servico_search_do_path, :method => 'get') do
+    %table
+        -form_tag(ordem_servico_search_do_path, :method => 'get') do
+            %tr
+                %td=label_tag :tipo_pedido, "Tipo de Serviço"
+                %td=select_tag :tipo_pedido, options_for_select(OrdemServico::TipoPedido.map {|x| [ x, x ] }), :include_blank => true
+            
+            %tr
+                %td=label_tag :situacao, "Tipo de Situação"
+                %td=select_tag :situacao, options_for_select(OrdemServico::Situacao.to_a), :include_blank => true
+            
+            %tr
+                %td=label_tag :tipo_equipamento, "Equipamento do pedido"
+                %td=select_tag :tipo_equipamento, options_from_collection_for_select(@equipamentos , 'id', 'nome'), :include_blank => true
 
-        =label_tag :tipo_pedido, "Tipo de Serviço"
-        =select_tag :tipo_pedido, options_for_select(OrdemServico::TipoPedido.map {|x| [ x, x ] }), :include_blank => true
-        %br
-
-        =label_tag :situacao, "Tipo de Situação"
-        =select_tag :situacao, options_for_select(OrdemServico::Situacao.to_a), :include_blank => true
-        %br
-
-        =label_tag :tipo_equipamento, "Equipamento do pedido"
-        =select_tag :tipo_equipamento, options_from_collection_for_select(@equipamentos , 'id', 'nome'), :include_blank => true
-        %br
-
-        =label_tag :numero_serie_equipamento, "Número de Série do Equipamento"
-        =text_field_tag :numero_serie_equipamento
-        %br
-
-        =label_tag :valor, "Valor do Serviço"
-        =text_field_tag 'valor[0]', '', :size => 8
-        A
-        =text_field_tag 'valor[1]', '', :size => 8
-        %br
-
-        =submit_tag "Buscar"
+            %tr
+                %td=label_tag :numero_serie_equipamento, "Número de Série do Equipamento"
+                %td=text_field_tag :numero_serie_equipamento
+            
+            %tr
+                %td=label_tag :valor, "Valor do Serviço"
+                %td
+                    =text_field_tag 'valor[0]', '', :size => 8
+                    A           
+                    =text_field_tag 'valor[1]', '', :size => 8
+            %tr
+                %td=submit_tag "Buscar"
 
 
