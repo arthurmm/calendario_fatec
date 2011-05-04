@@ -1,5 +1,9 @@
 - content_for :submenu do
     =render :partial => "layouts/menu"
 
-%p bem vindo
+%p Bem Vindo
+<br>
 
+
+- if flash[:notice]
+    %p= flash[:notice]
