@@ -16,6 +16,8 @@ class OrdemServicoController < ApplicationController
   def new
     @equipamentos = TipoEquipamento.all
     @ordem_servico = OrdemServico.new
+    @historico = Historico.new
+
     if params[:cliente_id]
       cliente = Cliente.find(params[:cliente_id])
         @cliente = [ [ cliente.nome, cliente.id ] ]
@@ -36,11 +38,21 @@ class OrdemServicoController < ApplicationController
     end
 
   def create
+    historico = params[:ordem_servico].delete(:historico)
+
     @ordem_servico = OrdemServico.new(params[:ordem_servico])
 
+    @ordem_servico.historicos << Historico.new(:descricao=> historico[:descricao], :situacao => @ordem_servico.situacao)
+    
     if @ordem_servico.save
       redirect_to :action => "index"
     else
+      @equipamentos = TipoEquipamento.all
+      @ordem_servico = OrdemServico.new
+      @historico = Historico.new
+      @clientes = Cliente.all.map do |cliente|
+        cliente = [ cliente.nome, cliente.id ]
+      end
       render :action => "new"
     end
   end
@@ -49,10 +61,16 @@ class OrdemServicoController < ApplicationController
     @ordem_servico = OrdemServico.find(params[:id])
     @tipo_equipamento = [ @ordem_servico.tipo_equipamento ]
     @cliente = [ [ @ordem_servico.cliente.nome, @ordem_servico.cliente.id ]]
+    @historico = Historico.new
   end
 
   def update
     @ordem_servico = OrdemServico.find(params[:id])
+
+    historico = params[:ordem_servico].delete(:historico)
+
+    @ordem_servico.historicos << Historico.new(:descricao => historico[:descricao], :situacao => params[:ordem_servico][:situacao])
+
     if @ordem_servico.update_attributes(params[:ordem_servico])
       redirect_to :action => 'index'
     else

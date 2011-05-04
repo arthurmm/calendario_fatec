@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.g4solutions.com.br",
+  :address              => "smtp.gmail.com",
   :port                 => 587,
   :domain               => "os.com",
-  :user_name            => "luiz.pereira@g4solutions.com.br",
-  :password             => "123456789",
+  :user_name            => "smtp.trabalho",
+  :password             => "thor1234",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }

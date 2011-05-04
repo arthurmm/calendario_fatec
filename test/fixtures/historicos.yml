@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  descricao: MyString
+  ordem_servico_id: 1
+  situacao: 1
+
+two:
+  descricao: MyString
+  ordem_servico_id: 1
+  situacao: 1

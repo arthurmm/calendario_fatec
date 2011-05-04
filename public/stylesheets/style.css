@@ -275,3 +275,8 @@ p {text-align: left;}
 
 }
 
+input.obrigatorio:focus, .obrigatorio:hover
+{
+  background-color:#F86473;
+}
+

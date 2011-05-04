@@ -21,6 +21,7 @@ class ClientesController < ApplicationController
 
   def create
     @cliente = Cliente.new(params[:cliente])
+    logger.info params[:cliente]
 
     if @cliente.save
       redirect_to :action => "show", :id => @cliente.id

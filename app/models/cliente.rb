@@ -6,6 +6,7 @@ class Cliente < ActiveRecord::Base
   accepts_nested_attributes_for :contatos
 
   validates_presence_of :nome, :message => "Campo nome obrigátorio."
+  validates_presence_of :rg, :message => "Campo RG é orbigatório."
   validates_length_of :nome, :minimum => 10, :message => "Campo nome deve conter no minimo de 10 caracteres"
   validates_presence_of :data_de_nascimento, :message => "Campo data de nascimento obrigatório."
 

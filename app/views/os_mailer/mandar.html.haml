@@ -1,0 +1,48 @@
+!!!
+%html
+  %body
+    .ordermservico.show
+    %h1 Ordens de Serviço
+    %table
+      %tr
+        %td Tipo da Ordem
+        %td= @ordem_servico.tipo_pedido
+      %tr
+        %td Equipamento
+        %td= @ordem_servico.tipo_equipamento.nome
+      %tr
+        %td Situação
+        %td= @ordem_servico.tipo_situacao
+      %tr
+        %td Descrição do Equipamento
+        %td= @ordem_servico.descricao_equipamento
+      %tr
+        %td Descrição Defeito
+        %td= @ordem_servico.descricao_defeito
+      %tr
+        %td Descrição do Serviço Realizado
+        %td= @ordem_servico.descricao_servico_realizado
+      %tr
+        %td Diagnóstico do Técnico
+        %td= @ordem_servico.diagnostico_tecnico
+      %tr
+        %td Número série do Equipamento Orçado
+        %td= @ordem_servico.numero_serie_equipamento
+      %tr
+        %td Descrição das Peças utilizadas
+        %td= @ordem_servico.descricao_pecas
+      %tr
+        %td Valor Serviço
+        %td= @ordem_servico.valor_servico
+      %tr
+		
+    %br
+    %h2 Histórico
+    %table
+      %th  Situação
+      %th  Descrição        
+      -@ordem_servico.historicos.each do |historico|
+        %tr
+          %td= OrdemServico::Situacao.invert[historico.situacao.to_i]
+          %td= historico.descricao
+

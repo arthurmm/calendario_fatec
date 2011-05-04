@@ -9,7 +9,7 @@ gem 'cancan'
 gem 'sqlite3'
 gem 'haml'
 gem "mail"
-gem 'mysql'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

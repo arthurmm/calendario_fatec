@@ -1,45 +1,74 @@
+
+
 -form_for(@cliente) do |f|
     .erros_de_validacao
         - unless @cliente.errors.empty?
             - @cliente.errors.each do |msg|
                 %p= msg.last
+    %table
+        %tr
+            %td= f.label :nome, "Nome"
+            %td= f.text_field :nome, :class =>"obrigatorio"
 
-    = f.label :nome, "Nome"
-    = f.text_field :nome
+        %tr
+            %td= f.label :rg,  "RG"
+            %td= f.text_field :rg, :class => "obrigatorio"
 
-    %br
-    = f.label :rg,  "RG"
-    = f.text_field :rg
+        %tr
+            %td= f.label :data_de_nascimento,  "Data de Nascimento"
+            %td= f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
+        
+        %tr
+            %td= f.label :cep, "Cep"
+            %td= f.text_field :cep
+        
+        %tr
+            %td= f.label :logradouro, "Logradouro"
+            %td= f.text_field :logradouro
+            %td= f.label :nr_logradouro, "Número"
+            %td= f.text_field :nr_logradouro, :size=>"10"
+        
+        %tr
+            %td= f.label :cidade, "Cidade"
+            %td= f.text_field :cidade
+        
+        %tr
+            %td= f.label :estado, "Estado"
+            %td= f.text_field :estado
+        
+        %tr
+            %td= f.label :bairro, "Bairro"
+            %td= f.text_field :bairro
+      
+        %tr
+            %td= f.label :complemento
+            %td= f.text_field :complemento
+        
+        %tr#contato    
+            - n_contato = 0
+            %td
+                =f.fields_for :contatos do |contato|
+                    - if @cliente.nome.blank?
+                        = contato.select(:tipo, options_for_select(Contato::TIPO, 2))
+                    - else
+                        = contato.label :valor, @cliente.contatos[n_contato].tipo_contato
+                    %td= contato.text_field :valor, :class=>"obrigatorio"
+                    - n_contato += 1
 
-    %br
-    = f.label :data_de_nascimento,  "Data de Nascimento"
-    = f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]
-
-    - n_contato = 0
-    %div#contato
-        =f.fields_for :contatos do |contato|
-            %br
-            - if @cliente.nome.blank?
-                = contato.select(:tipo, options_for_select(Contato::TIPO))
-            - else
-                = contato.label :valor, @cliente.contatos[n_contato].tipo_contato
-            = contato.text_field :valor
-            - n_contato += 1
-
-    %br
-    = f.submit "Salvar"
+        %tr
+            %td= f.submit "Salvar"
     
 
 - select_for_novo_contato = Contato::TIPO.to_a.map { |tipo| "<option value='#{tipo[1]}'>#{tipo[0]}</option>" }.to_s
 :javascript
     novos_contatos = 1;
     function appendNewContato(){
-        var select = '<div>';
-        select = select + '<select name="cliente[contatos_attributes][' + novos_contatos + '][tipo]">';
+        var select = '<tr>';
+        select = select + '<td><select name="cliente[contatos_attributes][' + novos_contatos + '][tipo]">';
         select = select + "#{select_for_novo_contato}";
-        select = select + '</select>';
-        select = select + '<input name="cliente[contatos_attributes][' + novos_contatos + '][valor]" type="text">';
-        select = select + '</div>';
+        select = select + '</select></td>';
+        select = select + '<td><input class="obrigatorio" name="cliente[contatos_attributes][' + novos_contatos + '][valor]" type="text"></td>';
+        select = select + '</tr>';
         $('contato').insert({ after : select});
         novos_contatos += 1;        
     };
