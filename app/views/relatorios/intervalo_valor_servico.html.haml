@@ -1,0 +1,21 @@
+.intervalo_valor_servico
+  %h1 Intervalo de Valor de Serviço
+  %table
+    %th Intervalo de valores (R$)
+    %th Quantidade
+    - @intervalo_valor_servico.sort.each do |array|
+      - k, v = array
+      - de, ate = k
+      %tr
+        %td
+          - case ate
+          - when 0
+            = "0"
+          - when 1..1_000_000
+            = "#{de} a #{ate}"
+          - else
+            = "Acima de 1000000"
+        %td
+          = v
+        %td
+          = link_to "Listar", ordem_servico_search_do_path('valor[0]' => de, 'valor[1]' => ate) 

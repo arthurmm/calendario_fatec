@@ -86,9 +86,9 @@ Relatórios
 !		Por tipo de Equipamento do pedido
 !			Tipo de Equipamento => Quantidade da ordem de serviço
 !			Link de uma lista com as ordens de serviço com o equipamento específico
-		Por valor do serviço (específico e intervalo)
-			Agrupamento de ordens de serviço por intervalo de valores (0 : 100, 101 : 200, 201 : 300, 301 : 400, ...)
-			Link de uma lista com as ordens de serviço com o equipamento específico
+!		Por valor do serviço (específico e intervalo)
+!			Agrupamento de ordens de serviço por intervalo de valores (0 : 100, 101 : 200, 201 : 300, 301 : 400, ...)
+!			Link de uma lista com as ordens de serviço com o equipamento específico
 	
 	Clientes (por data específica e por intervalo)
 		Variação de novos clientes por intervalo de tempo (dia, semana, mês, bimestre, trimestre, quadrimestre, semestre, ano, 5 anos, 10 anos)

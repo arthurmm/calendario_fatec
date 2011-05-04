@@ -12,6 +12,7 @@ Aps3::Application.routes.draw do
   get "ordem_servico/search"
   get "ordem_servico/search_do"
 
+  get "relatorios/intervalo_valor_servico"
   get "relatorios/tipo_equipamento"
   get "relatorios/tipo_situacao"
   get "relatorios/tipo_pedido"
