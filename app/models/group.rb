@@ -27,10 +27,10 @@ class Group < ActiveRecord::Base
 
   def pega_privilegio(coluna)
     ret = []
-    ret << :consulta if coluna & 0x01 > 0 
-    ret << :criar    if coluna & 0x02 > 0 
-    ret << :editar   if coluna & 0x04 > 0 
-    ret << :apagar   if coluna & 0x08 > 0 
+    ret << :consulta if coluna & 1 > 0 
+    ret << :criar    if coluna & 2 > 0 
+    ret << :editar   if coluna & 4 > 0 
+    ret << :apagar   if coluna & 8 > 0 
     ret
   end
 
