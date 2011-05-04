@@ -1,17 +1,27 @@
-%h2= @group.name
-%br
-%p Configure as permisões do grupo abaixo
+.group.show
+  %h2= @group.name
 
-= form_for(@role, :url => {:controller => "group", :action => "vincular_regra"}) do |f|
-    = f.label "Nome"
-    = f.text_field :name
-    %br
-    = f.label "Valor"
-    = f.text_field :value
-    %br
-    = f.hidden_field :Group
-    %br
-    = f.submit "Salvar Regras"
+  Controle de Grupos: 
+  = @group.privilegio_grupos * " | "
+  <br>
 
-%p= link_to "Voltar", group_index_path
+  Controle de Usuários: 
+  = @group.privilegio_usuarios * " | "
+  <br>
+
+  Controle de Clientes: 
+  = @group.privilegio_clientes * " | "
+  <br>
+
+  Controle de Ordem de Serviço: 
+  = @group.privilegio_ordem_servico * " | "
+  <br>
+
+  Controle de Equipamentos: 
+  = @group.privilegio_equipamentos * " | "
+  <br>
+
+  Controle de Relatórios: 
+  = @group.privilegio_relatorios * " | "
+  <br>
 

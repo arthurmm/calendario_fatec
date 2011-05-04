@@ -1,32 +1,24 @@
 class GroupController < ApplicationController
+ 
   def index
-    @groups = Group.find(:all)
+    @groups = Group.all
   end
 
   def new
-      @group = Group.new
-      @group.Role = Role.new
-      @role = @group.Role
+    @group = Group.new
   end
 
   def create
-   @group = Group.new(params[:group])
-   @group.save
-
-    redirect_to :action => "index"
+    @group = Group.new(params[:group])
+    if @group.save
+      redirect_to :action => "index"
+    else
+      render :action => "new"
+    end
   end
 
   def show
     @group = Group.find(params[:id])
-    @group.Role = Role.new
-    @role = @group.Role
-  end
-
-  def vincular_regra
-    @role = Role.new(params[:role])
-    @role.save
-
-    redirect_to :action => "index"
   end
 
 end
