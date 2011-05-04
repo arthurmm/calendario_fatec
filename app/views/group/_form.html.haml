@@ -1,0 +1,75 @@
+-form_for @group do |f|
+    .erros_de_validacao
+        - unless @group.errors.empty?
+            - @group.errors.each do |msg|
+                %p= msg.last
+
+    = f.label :name, "Nome"
+    = f.text_field :name
+    %br
+    = f.label :grupo_privileges, "Privilégios sobre os Grupos de Usuários:"
+    Visualizar
+    = check_box_tag 'grupo_privileges[]', 1, @group.grupo_privileges & 1 == 0 ? false : true
+    Criar
+    = check_box_tag 'grupo_privileges[]', 2, @group.grupo_privileges & 2 == 0 ? false : true
+    Editar
+    = check_box_tag 'grupo_privileges[]', 4, @group.grupo_privileges & 4 == 0 ? false : true
+    Apagar
+    = check_box_tag 'grupo_privileges[]', 8, @group.grupo_privileges & 8 == 0 ? false : true
+    %br
+
+    = f.label :usuario_privileges, "Privilégios sobre os Usuários:"
+    Visualizar
+    = check_box_tag "usuario_privileges[]", 1, @group.usuario_privileges & 0x01 == 0 ? false : true
+    Criar                                                                                          
+    = check_box_tag "usuario_privileges[]", 2, @group.usuario_privileges & 0x02 == 0 ? false : true
+    Editar                                                                                         
+    = check_box_tag "usuario_privileges[]", 4, @group.usuario_privileges & 0x04 == 0 ? false : true
+    Apagar                                                                                         
+    = check_box_tag "usuario_privileges[]", 8, @group.usuario_privileges & 0x08 == 0 ? false : true
+    %br
+
+    = f.label :cliente_privileges, "Privilégios sobre os Clientes:"
+    Visualizar
+    = check_box_tag "cliente_privileges[]", 1, @group.cliente_privileges & 0x01 == 0 ? false : true
+    Criar                                                                                          
+    = check_box_tag "cliente_privileges[]", 2, @group.cliente_privileges & 0x02 == 0 ? false : true
+    Editar                                                                                         
+    = check_box_tag "cliente_privileges[]", 4, @group.cliente_privileges & 0x04 == 0 ? false : true
+    Apagar                                                                                         
+    = check_box_tag "cliente_privileges[]", 8, @group.cliente_privileges & 0x08 == 0 ? false : true
+    %br
+
+    = f.label :ordem_servico_privileges, "Privilégios sobre as Ordens de Serviço:"
+    Visualizar
+    = check_box_tag "ordem_servico_privileges[]", 1, @group.ordem_servico_privileges & 0x01 == 0 ? false : true
+    Criar                                                                                                      
+    = check_box_tag "ordem_servico_privileges[]", 2, @group.ordem_servico_privileges & 0x02 == 0 ? false : true
+    Editar                                                                                                     
+    = check_box_tag "ordem_servico_privileges[]", 4, @group.ordem_servico_privileges & 0x04 == 0 ? false : true
+    Apagar                                                                                                     
+    = check_box_tag "ordem_servico_privileges[]", 8, @group.ordem_servico_privileges & 0x08 == 0 ? false : true
+    %br
+
+    = f.label :equipamento_privileges, "Privilégios sobre Equipamentos:"
+    Visualizar
+    = check_box_tag "equipamento_privileges[]", 1, @group.equipamento_privileges & 0x01 == 0 ? false : true
+    Criar                                                                                                  
+    = check_box_tag "equipamento_privileges[]", 2, @group.equipamento_privileges & 0x02 == 0 ? false : true
+    Editar                                                                                                 
+    = check_box_tag "equipamento_privileges[]", 4, @group.equipamento_privileges & 0x04 == 0 ? false : true
+    Apagar                                                                                                 
+    = check_box_tag "equipamento_privileges[]", 8, @group.equipamento_privileges & 0x08 == 0 ? false : true
+    %br
+
+    = f.label :relatorios_privileges, "Privilégios sobre os Relatórios:"
+    Visualizar
+    = check_box_tag "relatorios_privileges[]", 1, @group.relatorios_privileges & 0x01 == 0 ? false : true
+    Criar                                                                                                
+    = check_box_tag "relatorios_privileges[]", 2, @group.relatorios_privileges & 0x02 == 0 ? false : true
+    Editar                                                                                               
+    = check_box_tag "relatorios_privileges[]", 4, @group.relatorios_privileges & 0x04 == 0 ? false : true
+    Apagar                                                                                               
+    = check_box_tag "relatorios_privileges[]", 8, @group.relatorios_privileges & 0x08 == 0 ? false : true
+    %br
+    = f.submit "Salvar"

@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  has_one :Role
+  has_many :users
 
   def privilegio_grupos
     pega_privilegio(grupo_privileges)

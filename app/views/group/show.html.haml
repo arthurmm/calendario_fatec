@@ -1,27 +1,13 @@
 .group.show
   %h2= @group.name
-
-  Controle de Grupos: 
-  = @group.privilegio_grupos * " | "
   <br>
-
-  Controle de Usuários: 
-  = @group.privilegio_usuarios * " | "
   <br>
-
-  Controle de Clientes: 
-  = @group.privilegio_clientes * " | "
-  <br>
-
-  Controle de Ordem de Serviço: 
-  = @group.privilegio_ordem_servico * " | "
-  <br>
-
-  Controle de Equipamentos: 
-  = @group.privilegio_equipamentos * " | "
-  <br>
-
-  Controle de Relatórios: 
-  = @group.privilegio_relatorios * " | "
-  <br>
-
+  - array = [ ['Grupos', 'grupos'], ['Usuários', 'usuarios'], ['Clientes', 'clientes'], ['Ordem de Serviço','ordem_servico'], ['Equipamentos', 'equipamentos'], ['Relatórios', 'relatorios']]
+  - array.each do |opcao|
+    %h3= "Controle de #{opcao.first}:"
+    %table
+      %tr
+        - @group.send("privilegio_#{opcao.last}").each do |priv|
+          %td
+            = priv.to_s.capitalize 
+    <br>
