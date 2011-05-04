@@ -3,9 +3,9 @@
     -form_for @ordem_servico do |f|
       %tr
       - unless @ordem_servico.errors.empty?
-        - @ordem_servico.errors.full_messages.each  do |msg|
-          %td= msg
-          %td
+        - @ordem_servico.errors.each  do |msg|
+          %td= msg.last
+          %td= "testess"
           %td
           %td
       %tr
@@ -20,16 +20,17 @@
         %td= f.select :tipo_equipamento_id, options_from_collection_for_select(@equipamentos || @tipo_equipamento, 'id', 'nome')
         %td= link_to(image_tag('add.png', {:class=>"link_button" }), new_tipo_equipamento_path)
 
-      %tr
-      Tipo da Ordem de Serviço
-      - if @ordem_servico.tipo_pedido.blank?
-        %td= f.label :tipo_pedido, "Orçamento"
-        %td= f.radio_button :tipo_pedido, 'Orçamento', :checked => true
-      - else
-        %td= f.label :tipo_pedido, "Orçamento"
-        %td= f.radio_button :tipo_pedido, 'Orçamento'
-        %td= f.label :tipo_pedido, "Ordem de Serviço"
-        %td= f.radio_button :tipo_pedido, 'Ordem de Serviço'
+      %tr 
+        %td Tipo da Ordem de Serviço
+        %td
+          - if @ordem_servico.tipo_pedido.blank?
+            = f.label :tipo_pedido, "Orçamento"
+            = f.radio_button :tipo_pedido, 'Orçamento', :checked => true
+          - else
+            = f.label :tipo_pedido, "Orçamento"
+            = f.radio_button :tipo_pedido, 'Orçamento'
+            = f.label :tipo_pedido, "Ordem de Serviço"
+            = f.radio_button :tipo_pedido, 'Ordem de Serviço'
 
       %tr
         %td Situação
@@ -39,8 +40,9 @@
             = f.radio_button :situacao, OrdemServico::Situacao["Em orçamento"], :checked => true
           - else
             - OrdemServico::Situacao.each_pair do |k, v|
-              = f.label :situacao, k
+              = f.label :situacao, k, :style=>"width:200px; display:block;float:left"
               = f.radio_button :situacao, v
+              %br
 
       %tr
         %td= f.label :descricao_equipamento, "Descrição do Equipamento"

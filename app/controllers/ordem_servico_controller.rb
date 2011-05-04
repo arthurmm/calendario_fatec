@@ -47,6 +47,12 @@ class OrdemServicoController < ApplicationController
     if @ordem_servico.save
       redirect_to :action => "index"
     else
+      @equipamentos = TipoEquipamento.all
+      @ordem_servico = OrdemServico.new
+      @historico = Historico.new
+      @clientes = Cliente.all.map do |cliente|
+        cliente = [ cliente.nome, cliente.id ]
+      end
       render :action => "new"
     end
   end

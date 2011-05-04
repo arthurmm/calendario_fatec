@@ -2,7 +2,7 @@ class OrdemServico < ActiveRecord::Base
   belongs_to :cliente
   belongs_to :tipo_equipamento
 	has_many :historicos
-	#after_save :enviar_email
+	after_save { |record| enviar_email(record) }
 
   TipoPedido = [ 'Orçamento', 'Ordem de Serviço' ]
 
@@ -34,14 +34,13 @@ class OrdemServico < ActiveRecord::Base
   end
 	
 	def enviar_email(record)
-		email = ""
-		record.cliente.contatos.each do |c|
-			email = c.valor if c.tipo == 2
-		end
-	
-		unless email.blank? && record.situacao == 2
-				OsMailer.manda(email)
-		end
+    record.cliente.contatos.each do |contato|
+      logger.info "#{contato.valor} - #{contato.tipo}"
+      if contato.tipo == 2
+        OsMailer.mandar(record, contato.valor).deliver
+      end  
+    end
+    
 	end
 
 

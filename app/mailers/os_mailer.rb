@@ -1,7 +1,8 @@
 class OsMailer < ActionMailer::Base
   default :from => "tordek.coast@gmail.com"
 
-	def mandar(email)
-		mail(:to => email, :subject => "teste", :body => "<p>teste do <b>email</b></p>")
+	def mandar(ordem_servico, email)
+    @ordem_servico = ordem_servico
+		mail(:to => email, :subject => "Situação da Ordem de Servico")
 	end
 end

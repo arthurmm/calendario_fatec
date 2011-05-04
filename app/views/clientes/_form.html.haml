@@ -12,7 +12,7 @@
 
         %tr
             %td= f.label :rg,  "RG"
-            %td= f.text_field :rg
+            %td= f.text_field :rg, :class => "obrigatorio"
 
         %tr
             %td= f.label :data_de_nascimento,  "Data de Nascimento"
@@ -49,7 +49,7 @@
             %td
                 =f.fields_for :contatos do |contato|
                     - if @cliente.nome.blank?
-                        = contato.select(:tipo, options_for_select(Contato::TIPO))
+                        = contato.select(:tipo, options_for_select(Contato::TIPO, 2))
                     - else
                         = contato.label :valor, @cliente.contatos[n_contato].tipo_contato
                     %td= contato.text_field :valor, :class=>"obrigatorio"
