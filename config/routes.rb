@@ -2,6 +2,9 @@ Aps3::Application.routes.draw do
 
   devise_for :users
 
+  match '/criar_usuario', :controller => 'users', :action => 'create'
+  match '/atualizar_usuario/(:id)', :controller => 'users', :action => 'update'
+
   root :to => 'home#index'
   get "clientes/index"
 

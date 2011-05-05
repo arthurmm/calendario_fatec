@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   layout :logged_layout
 
-  ACTIONS = {"index" => :consulta, "show" => :consulta, "update" => :editar, "edit" => :editar, "destroy" => :apagar, "new" => :criar }
+  ACTIONS = {"create" => :criar, "index" => :consulta, "show" => :consulta, "update" => :editar, "edit" => :editar, "destroy" => :apagar, "new" => :criar }
   CONTROLLERS = {"users" => "usuarios", "group" => "grupos", "clientes" => "clientes", "ordem_servico" => "ordem_servico", "tipo_equipamento" => "equipamentos", "relatorios" => "relatorios" }
 
   def logged_layout

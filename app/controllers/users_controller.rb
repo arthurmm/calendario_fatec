@@ -10,12 +10,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @grupos = Group.all
-
   end
 
   def create
     @user = User.new(params[:user])
-
+    @user.group_id = params[:user][:group_id]
     if @user.save
       redirect_to :action => "index"
     else
@@ -25,16 +24,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-        @grupos = Group.all
+    @grupos = Group.all
   end
 
   def update
     @user = User.find(params[:id])
+
+    @user.group_id = params[:user][:group_id]
+
     if @user.update_attributes(params[:user])
       redirect_to :action => 'index'
     else
-      flash[:error] = 'Houve algum erro no atualização dos campos'
-      redirect_to :action => 'edit'
+      @grupos = Group.all
+      render :action => 'edit'
     end
   end
 end

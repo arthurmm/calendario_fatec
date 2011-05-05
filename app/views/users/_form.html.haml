@@ -1,5 +1,6 @@
 .user.insert
-    = form_for(@user) do |f|
+    - url =  @user.id.blank? ? ac : ac+"/#{@user.id}"
+    = form_for(@user, :url=> url ) do |f|
         -@user.errors.each do |msg|
             %p= msg.last
         = f.label :name, "Nome"
@@ -9,7 +10,7 @@
         = f.text_field :email
         %br
         = f.label :group_id, "Grupo do usuário"
-        = f.select :group_id, options_from_collection_for_select(@grupos , 'id', 'name', @user.group.id), :include_blank => true
+        = f.select :group_id, options_from_collection_for_select(@grupos , 'id', 'name')
         %br
         = f.label :password, "Senha"
         = f.password_field :password
