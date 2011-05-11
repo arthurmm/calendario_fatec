@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   layout :logged_layout
 
 
-  ACTIONS = {"index" => :consulta, "show" => :consulta, "update" => :editar, "edit" => :editar, "destroy" => :apagar, "new" => :criar , 'search' => :consulta, 'search_do' => :consulta, 'tipo_pedido' => :consulta, 'tipo_situacao' => :consulta}
+  ACTIONS = {"index" => :consulta, "show" => :consulta, "update" => :editar, "edit" => :editar, "destroy" => :apagar, "new" => :criar , 'search' => :consulta, 'search_do' => :consulta, 'tipo_pedido' => :consulta, 'tipo_situacao' => :consulta, 'tipo_equipamento' => :consulta, 'intervalo_valor_servico' => :consulta}
   CONTROLLERS = {"users" => "usuarios", "group" => "grupos", "clientes" => "clientes", "ordem_servico" => "ordem_servico", "tipo_equipamento" => "equipamentos", "relatorios" => "relatorios" }
 
   def logged_layout
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     perms = current_user.group.send("privilegio_#{CONTROLLERS[ctrl]}".to_sym)
     unless perms.include? ACTIONS[acti]
       flash[:notice] = "Você não tem permissão para #{ACTIONS[acti]} #{CONTROLLERS[ctrl]}"
-      redirect_to :controller => 'home'
+      redirect_to :action => "index", :controller => "home"
     end
   end
 

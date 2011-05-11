@@ -7,7 +7,7 @@ Aps3::Application.routes.draw do
 
   root :to => 'relatorios#tipo_situacao'
   get "clientes/index"
-
+  get "home/index"
   get "users/index"
 
   get "clientes/search"
