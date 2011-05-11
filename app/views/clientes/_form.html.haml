@@ -37,15 +37,21 @@
             %td= f.text_field :logradouro
             %td= f.label :nr_logradouro, "Número"
             %td= f.text_field :nr_logradouro, :size=>"10"
+         
+        %tr
+            %td= f.label :estado, "Estado"
+            - if @cliente.estado.empty?
+                %td= f.select :estado, options_for_select(Cliente::Uf.sort), {}, :onchange => "feedMunicipioSelect(this.value);"
+            - else
+                %td= f.select :estado, options_for_select(Cliente::Uf.sort, @cliente.estado), {}, :onchange => "feedMunicipioSelect(this.value);", :onload => "feedMunicipioSelect(this.value);"
         
         %tr
             %td= f.label :cidade, "Cidade"
-            %td= f.select :cidade, ""
-        
-        %tr
-            %td= f.label :estado, "Estado"
-            %td= f.select :estado, options_for_select(Cliente::Uf.sort), {}, :onchange => "feedMunicipioSelect(this.value);"
-        
+            - if @cliente.cidade.blank?
+                %td= f.select :cidade, ""
+            - else
+                %td= f.select :cidade, [ [ @cliente.cidade, @cliente.cidade ] ]
+       
         %tr
             %td= f.label :bairro, "Bairro"
             %td= f.text_field :bairro
@@ -89,7 +95,6 @@
         $('cliente_cidade').innerHTML += '<option value=\''+item+'\'>'+item+'</option>';
       }
     };
-    feedMunicipioSelect('AC');
 
 - content_for :submenu do
     %ul
