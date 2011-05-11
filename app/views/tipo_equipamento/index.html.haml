@@ -6,7 +6,9 @@
             %th Nome do Equipamento
             -@equipamentos.each do |equip|
                 %tr
-                    %td= delete_link tipo_equipamento_path(equip.id), :confirm => "Quer deletar esse equipamento?", :method => :delete
-
+                    - if OrdemServico.find(:all, :conditions => ['tipo_equipamento_id = ?', equip.id]).blank?
+                        %td= delete_link tipo_equipamento_path(equip.id), :confirm => "Quer deletar esse equipamento?", :method => :delete
+                    - else    
+                        %td
                     %td= equip.nome
 

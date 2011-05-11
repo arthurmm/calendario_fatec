@@ -33,7 +33,7 @@ class TipoEquipamentoController < ApplicationController
 
   def destroy
     TipoEquipamento.find(params[:id]).delete
-
+    
     redirect_to :action => "index"
   end
 
