@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20110511010203) do
     t.integer  "tipo"
   end
 
+  create_table "documento_federals", :force => true do |t|
+    t.string   "tipo_doc"
+    t.integer  "numero"
+    t.integer  "cliente_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
