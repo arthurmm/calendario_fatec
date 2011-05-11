@@ -10,7 +10,7 @@ class OrdemServicoController < ApplicationController
   end
 
   def index
-    @ordem_servicos = OrdemServico.all
+    @ordem_servicos = OrdemServico.find(:all, :conditions => {:situacao => [1,2,3,4]})
   end
 
   def new
