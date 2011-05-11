@@ -5,7 +5,7 @@ Aps3::Application.routes.draw do
   match '/criar_usuario', :controller => 'users', :action => 'create'
   match '/atualizar_usuario/(:id)', :controller => 'users', :action => 'update'
 
-  root :to => 'home#index'
+  root :to => 'relatorios#tipo_situacao'
   get "clientes/index"
 
   get "users/index"
