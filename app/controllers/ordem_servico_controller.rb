@@ -58,6 +58,13 @@ class OrdemServicoController < ApplicationController
 
   def edit
     @ordem_servico = OrdemServico.find(params[:id])
+
+    if [5,6,7].include? @ordem_servico.situacao.to_i
+      flash[:message] = "Ordem de serviço Finalizada ou Cancelada não pode ser alterada."
+      redirect_to :action => "show"
+    end  
+    
+
     @tipo_equipamento = [ @ordem_servico.tipo_equipamento ]
     @cliente = [ [ @ordem_servico.cliente.nome, @ordem_servico.cliente.id ]]
     @historico = Historico.new

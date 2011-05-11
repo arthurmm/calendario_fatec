@@ -23,7 +23,7 @@
                     - if @ordem_servico.tipo_pedido.blank?
                         = f.label :tipo_pedido, "Orçamento"
                         = f.radio_button :tipo_pedido, 'Orçamento', :checked => true
-                    - elsif @ordem_servico.tipo_pedido == 2
+                    - elsif @ordem_servico.tipo_pedido == "Ordem de Serviço"
                         = f.label :tipo_pedido, "Ordem de Serviço"
                         = f.radio_button :tipo_pedido, 'Ordem de Serviço', :checked => true
                     - else                

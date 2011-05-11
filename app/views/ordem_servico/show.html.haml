@@ -1,4 +1,7 @@
 .ordermservico.show
+    - unless flash[:message].blank?
+        .erros_de_validacao= flash[:message]
+
     %h1 Ordens de Serviço
     %table
         %tr
