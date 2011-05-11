@@ -14,6 +14,16 @@
             %td= f.label :rg,  "RG"
             %td= f.text_field :rg, :class => "obrigatorio"
 
+        %tr#documento_federal    
+            %td
+                =f.fields_for :documento_federal do |doc|
+                    - if @cliente.nome.blank?
+                        = doc.select(:tipo_doc, options_for_select(DocumentoFederal::Tipo, 1))
+                    - else
+                        = doc.label :tipo_doc, @cliente.documento_federal.tipo_doc
+                        = doc.hidden_field :tipo_doc
+                    %td= doc.text_field :numero, :class=>"obrigatorio"
+
         %tr
             %td= f.label :data_de_nascimento,  "Data de Nascimento"
             %td= f.date_select :data_de_nascimento, :start_year => 1900, :order=>[:day, :month, :year]

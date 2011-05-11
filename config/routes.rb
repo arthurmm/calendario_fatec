@@ -21,6 +21,7 @@ Aps3::Application.routes.draw do
   resources :clientes do
     resources :contato
     resources :ordem_servico
+    resources :documento_federal
   end
 
   resources :tipo_equipamento
