@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tipo_doc: MyString
+  numero: 
+
+two:
+  tipo_doc: MyString
+  numero: 

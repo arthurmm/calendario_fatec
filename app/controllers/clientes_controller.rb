@@ -17,6 +17,7 @@ class ClientesController < ApplicationController
   def new
     @cliente = Cliente.new
     @cliente.contatos << Contato.new
+    @cliente.documento_federal = DocumentoFederal.new
   end
 
   def create

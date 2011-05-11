@@ -6,6 +6,10 @@
                 %strong RG do cliente:
                 %label= @cliente.rg
             %p
+                %strong Documento Federal Cliente:
+                %label= @cliente.documento_federal.tipo_doc
+                %label= @cliente.documento_federal.numero
+            %p
                 %strong Data de Nascimento:
                 %label= @cliente.data_de_nascimento
 
@@ -45,5 +49,5 @@
 
 -content_for :submenu do
     %ul
+        %li= link_to "Editar", edit_cliente_path(@cliente)
         %li= link_to "Adicionar OS", new_cliente_ordem_servico_path(@cliente)
-

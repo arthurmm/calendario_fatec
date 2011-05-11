@@ -1,9 +1,11 @@
 class Cliente < ActiveRecord::Base
   #has_many OrdemServico
 
+  has_one :documento_federal
   has_many :contatos, :class_name => "Contato"
   has_many :ordem_servico
   accepts_nested_attributes_for :contatos
+  accepts_nested_attributes_for :documento_federal
 
   validates_presence_of :nome, :message => "Campo nome obrigátorio."
   validates_presence_of :rg, :message => "Campo RG é obrigátorio."
