@@ -159,8 +159,12 @@ color:#000000;
 
 }
 
-
-
+.right {
+  display: block;
+  width: 200px;
+  float: right;
+  color: white;   
+}
 
 #content
 {
@@ -272,7 +276,7 @@ p {text-align: left;}
 {
     width:22px;
     height:22px;
-
+    border: none;
 }
 
 input.obrigatorio:focus, .obrigatorio:hover
