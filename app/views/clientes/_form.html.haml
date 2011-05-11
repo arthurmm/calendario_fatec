@@ -1,8 +1,8 @@
 
 
 -form_for(@cliente) do |f|
-    - unless @cliente.errors.empty?
-        .erros_de_validacao
+    .erros_de_validacao
+        - unless @cliente.errors.empty?
             - @cliente.errors.each do |msg|
                 %p= msg.last
     %table
@@ -40,11 +40,11 @@
         
         %tr
             %td= f.label :cidade, "Cidade"
-            %td= f.text_field :cidade
+            %td= f.select :cidade, ""
         
         %tr
             %td= f.label :estado, "Estado"
-            %td= f.text_field :estado
+            %td= f.select :estado, options_for_select(Cliente::Uf.sort), {}, :onchange => "feedMunicipioSelect(this.value);"
         
         %tr
             %td= f.label :bairro, "Bairro"
@@ -82,6 +82,14 @@
         $('contato').insert({ after : select});
         novos_contatos += 1;        
     };
+    function feedMunicipioSelect(uf) {
+      $('cliente_cidade').innerHTML = '';
+      for(i=0; i<municipios[uf].length; i++){
+        item = municipios[uf][i];
+        $('cliente_cidade').innerHTML += '<option value=\''+item+'\'>'+item+'</option>';
+      }
+    };
+    feedMunicipioSelect('AC');
 
 - content_for :submenu do
     %ul

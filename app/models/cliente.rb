@@ -11,7 +11,17 @@ class Cliente < ActiveRecord::Base
   validates_presence_of :rg, :message => "Campo RG é obrigátorio."
   validates_length_of :nome, :minimum => 10, :message => "Campo nome deve conter no minimo de 10 caracteres"
   validates_presence_of :data_de_nascimento, :message => "Campo data de nascimento obrigatório."
+  validates_presence_of :cidade, :message => "Escolha um municipio da lista"
 
+  Uf = {
+    "ACRE" => "AC", "ALAGOAS" => "AL", "AMAZONAS" => "AM", "AMAPA" => "AP", 
+    "BAHIA" => "BA", "CEARA" => "CE", "DISTRITO FEDERAL" => "DF", "ESPIRITO SANTO" => "ES", 
+    "GOIAS" => "GO", "MARANHAO" => "MA", "MINAS GERAIS" => "MG", "MATO GROSSO DO SUL" => "MS", 
+    "MATO GROSSO" => "MT", "PARA" => "PA", "PARAIBA" => "PB", "PERNAMBUCO" => "PE", "PIAUI" => "PI", 
+    "PARANA" => "PR", "RIO DE JANEIRO" => "RJ", "RIO GRANDE DO NORTE" => "RN", "RONDONIA" => "RO", 
+    "RORAIMA" => "RR", "RIO GRANDE DO SUL" => "RS", "SANTA CATARINA" => "SC", "SERGIPE" => "SE", 
+    "SAO PAULO" => "SP", "TOCANTINS" => "TO"
+  }
 
   def self.search(search)
     query = []
