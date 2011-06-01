@@ -42,7 +42,7 @@
                         - OrdemServico::Situacao.each_pair do |k, v|
                             = f.label :situacao, k, :style=>"width:200px; display:block;float:left"
                             - if [5,6,7].include? v
-                                = f.radio_button :situacao, v, :onclick => "return confirm('Deseja realmente mudar a situação para #{k}');"
+                                = f.radio_button :situacao, v, :onclick => "return confirm('Deseja realmente mudar o situação para #{k}');"
                             - else
                                 = f.radio_button :situacao, v
                             %br
